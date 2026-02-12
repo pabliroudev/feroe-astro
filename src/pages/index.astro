@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import InfoCard from '../components/InfoCard.astro';
+import { getCollection } from 'astro:content';
+
+const noticias = (await getCollection('noticias'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const eventos = [
+  { date: 'Sáb 22 Feb', title: 'Encuentro abierto', place: 'Por definir' },
+  { date: 'Mar 25 Feb', title: 'Reunión de coordinación', place: 'Online' },
+  { date: 'Vie 28 Feb', title: 'Presentación de propuestas', place: 'Por definir' },
+];
+---
+<BaseLayout
+  title="FEROE"
+  description="FEROE: información, propuestas, agenda, noticias, transparencia y participación ciudadana."
+>
+  <Hero />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-3">
+        <InfoCard
+          title="Quiénes somos"
+          body="Historia, valores, equipo y forma de organización. (Sección preparada para ampliar.)"
+          href="/quienes-somos"
+          cta="Conocer FEROE"
+        />
+        <InfoCard
+          title="Programa"
+          body="Propuestas por temas y territorio: estructura lista para ir llenando contenido."
+          href="/programa"
+          cta="Explorar propuestas"
+        />
+        <InfoCard
+          title="Participa"
+          body="Afiliación, voluntariado, contacto y formas de implicarte en el proyecto."
+          href="/participa"
+          cta="Sumarme"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 class="h2">Últimas noticias</h2>
+          <p class="muted" style="margin-top:0">Comunicados, notas de prensa y actualizaciones.</p>
+
+          <div class="grid" style="margin-top:14px">
+            {noticias.map((p) => (
+              <a class="news" href={`/noticias/${p.slug}`}>
+                <div class="meta">
+                  <span class="tag">Noticia</span>
+                  <span class="date">{p.data.date.toLocaleDateString('es-ES')}</span>
+                </div>
+                <div class="title">{p.data.title}</div>
+                <div class="muted">{p.data.description}</div>
+              </a>
+            ))}
+          </div>
+
+          <div style="margin-top:14px">
+            <a class="btn ghost" href="/noticias">Ver todas</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Agenda de actos</h2>
+          <p class="muted" style="margin-top:0">Convocatorias y encuentros (demo).</p>
+
+          <div class="grid" style="margin-top:14px">
+            {eventos.map((e) => (
+              <div class="event">
+                <div class="date">{e.date}</div>
+                <div>
+                  <div class="title">{e.title}</div>
+                  <div class="muted">{e.place}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style="margin-top:14px">
+            <a class="btn ghost" href="/agenda">Ver agenda</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card cta">
+        <div>
+          <div class="pill">Transparencia</div>
+          <h2 class="h2" style="margin-top:10px">Rendición de cuentas desde el día uno</h2>
+          <p class="muted" style="margin:0; max-width: 80ch">
+            Estructura preparada para publicar financiación, estatutos, organigrama y memorias.
+            Integraremos documentos, versiones y descargas.
+          </p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="/transparencia">Abrir transparencia</a>
+          <a class="btn" href="/prensa">Recursos de prensa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .news{
+    display: grid;
+    gap: 6px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(44,189,191,0.06);
+    border: 1px solid rgba(44,189,191,0.14);
+    text-decoration: none;
+  }
+  .news:hover{ text-decoration: none; border-color: rgba(44,189,191,0.28); }
+  .meta{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--ink-500);
+    font-weight: 800;
+    font-size: 12px;
+  }
+  .tag{
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(4,150,137,0.12);
+    border: 1px solid rgba(4,150,137,0.18);
+    color: var(--ink-700);
+  }
+  .title{
+    font-weight: 950;
+    letter-spacing: -0.01em;
+  }
+
+  .event{
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(14,27,45,0.12);
+    background: rgba(255,255,255,0.70);
+  }
+  .event .date{
+    font-weight: 950;
+    color: var(--primary-700);
+  }
+
+  .cta{
+    display: grid;
+    gap: 16px;
+    align-items: center;
+  }
+  .cta .actions{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  @media (min-width: 960px){
+    .cta{ grid-template-columns: 1fr auto; }
+  }
+</style>

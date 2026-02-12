@@ -1,0 +1,145 @@
+---
+const {
+  kicker = "Movimiento político",
+  title = "FEROE",
+  subtitle = "Una plataforma para informar, organizar y participar: propuestas, agenda, transparencia y contacto directo.",
+  primaryCta = { href: "/participa", label: "Participa" },
+  secondaryCta = { href: "/programa", label: "Ver programa" },
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="container inner">
+    <div class="copy">
+      <div class="pill">{kicker}</div>
+      <h1 class="h1">{title}</h1>
+      <p class="lead">{subtitle}</p>
+
+      <div class="actions">
+        <a class="btn primary" href={primaryCta.href}>{primaryCta.label}</a>
+        <a class="btn" href={secondaryCta.href}>{secondaryCta.label}</a>
+      </div>
+
+      <div class="kpi">
+        <div class="item">
+          <div class="num">+100</div>
+          <div class="lbl">Propuestas (demo)</div>
+        </div>
+        <div class="item">
+          <div class="num">12</div>
+          <div class="lbl">Áreas temáticas</div>
+        </div>
+        <div class="item">
+          <div class="num">24/7</div>
+          <div class="lbl">Canales de contacto</div>
+        </div>
+        <div class="item">
+          <div class="num">100%</div>
+          <div class="lbl">Transparencia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="visual" aria-hidden="true">
+      <div class="badge">
+        <img src="/logo.png" width="180" height="180" alt="" />
+        <div class="badge-title">FEROE</div>
+        <div class="badge-sub">Identidad visual</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 52px 0 22px;
+  }
+  .inner {
+    display: grid;
+    gap: 22px;
+    align-items: center;
+  }
+  .actions {
+    margin-top: 22px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* ✅ más aire entre botones y las cajas KPI */
+  .kpi {
+    margin-top: 18px;
+    gap: 16px;
+  }
+
+  @media (min-width: 960px) {
+    .kpi {
+      margin-top: 22px;
+      gap: 18px;
+    }
+  }
+
+  .visual {
+    display: grid;
+    place-items: center;
+  }
+  .badge {
+    width: min(420px, 100%);
+    padding: 18px;
+    border-radius: 24px;
+    background:
+      radial-gradient(
+        900px 500px at 10% 10%,
+        rgba(44, 189, 191, 0.28),
+        transparent 60%
+      ),
+      radial-gradient(
+        700px 440px at 100% 40%,
+        rgba(4, 150, 137, 0.18),
+        transparent 55%
+      ),
+      rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(14, 27, 45, 0.12);
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .badge img {
+    filter: drop-shadow(0 16px 28px rgba(14, 27, 45, 0.18));
+  }
+  .badge-title {
+    margin-top: 10px;
+    font-weight: 1000;
+    letter-spacing: 0.14em;
+  }
+  .badge-sub {
+    margin-top: 2px;
+    color: var(--ink-500);
+    font-weight: 750;
+    font-size: 13px;
+  }
+
+  @media (min-width: 960px) {
+    .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px var(--pad);
+    }
+
+    .hero {
+      padding: 70px 0 30px;
+    }
+    .nav {
+      gap: 22px;
+    }
+
+    .nav ul {
+      gap: 18px;
+    }
+
+    .nav .cta {
+      gap: 12px;
+    }
+  }
+</style>

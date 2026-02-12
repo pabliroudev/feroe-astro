@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout title="Quiénes somos" description="Historia, valores y equipo de FEROE.">
+  <PageHeader
+    title="Quiénes somos"
+    description="Sección lista para contar historia, valores, principios y equipo. El texto es provisional para maquetación."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 class="h2">Misión</h2>
+          <p class="muted" style="margin:0">
+            Construir una organización abierta, con propuesta política clara, mecanismos de participación y rendición de cuentas.
+            (Contenido de ejemplo.)
+          </p>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Valores</h2>
+          <ul class="muted" style="margin:0; padding-left: 18px">
+            <li>Transparencia y buen gobierno</li>
+            <li>Participación ciudadana</li>
+            <li>Justicia social y oportunidades</li>
+            <li>Sostenibilidad y futuro</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section compact"></div>
+
+      <div class="card">
+        <h2 class="h2">Equipo (demo)</h2>
+        <div class="grid cols-3" style="margin-top: 14px">
+          {['Portavocía', 'Organización', 'Comunicación'].map((role) => (
+            <div class="card" style="box-shadow:none">
+              <div class="pill">{role}</div>
+              <p class="muted" style="margin:10px 0 0">
+                Nombre Apellido · breve descripción / responsabilidades.
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

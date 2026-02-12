@@ -1,0 +1,70 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container inner">
+    <div class="brand">
+      <img src="/logo.png" width="34" height="34" alt="" aria-hidden="true" />
+      <div>
+        <div class="name">FEROE</div>
+        <div class="muted">Proyecto web (contenido en desarrollo)</div>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="/transparencia">Transparencia</a>
+      <a href="/prensa">Prensa</a>
+      <a href="/contacto">Contacto</a>
+    </div>
+  </div>
+
+  <div class="container bottom">
+    <span class="muted">© {year} FEROE</span>
+    <span class="muted">Hecho por<a href="https://www.linkedin.com/in/pablo-leon-vergara/"> Pablo León</a></span>
+  </div>
+</footer>
+
+<style>
+  .footer{
+    margin-top: 40px;
+    border-top: 1px solid rgba(14,27,45,0.10);
+    background: rgba(255,255,255,0.55);
+  }
+  .inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px var(--pad);
+  }
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .name{
+    font-weight: 1000;
+    letter-spacing: 0.08em;
+    font-size: 14px;
+  }
+  img{ filter: drop-shadow(0 10px 14px rgba(14,27,45,0.12)); }
+  .links{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  a{
+    font-weight: 800;
+    color: var(--ink-700);
+    text-decoration: none;
+  }
+  a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+  .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 var(--pad) 18px;
+  }
+</style>

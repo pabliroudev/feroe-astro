@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const temas = [
+  { title: 'Economía y empleo', body: 'Medidas para crecimiento, empleo digno y tejido productivo.' },
+  { title: 'Servicios públicos', body: 'Sanidad, educación y cuidados: calidad, acceso y eficiencia.' },
+  { title: 'Vivienda', body: 'Oferta, rehabilitación, alquiler asequible y equilibrio urbano.' },
+  { title: 'Seguridad y convivencia', body: 'Prevención, proximidad y cooperación institucional.' },
+  { title: 'Transición ecológica', body: 'Energía, movilidad, agua y resiliencia climática.' },
+  { title: 'Instituciones', body: 'Reformas, transparencia y evaluación de políticas públicas.' },
+];
+---
+<BaseLayout title="Programa" description="Propuestas por temas y territorio.">
+  <PageHeader
+    title="Programa / propuestas"
+    description="Estructura por temas y territorio. Aquí podemos añadir filtros, buscador y documentos descargables."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-3">
+        {temas.map((t) => (
+          <div class="card">
+            <h3 style="margin:0 0 8px; letter-spacing: -0.01em">{t.title}</h3>
+            <p class="muted" style="margin:0">{t.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="section compact"></div>
+
+      <div class="card">
+        <h2 class="h2">Por territorio</h2>
+        <p class="muted" style="margin-top: 0">
+          Si vais a trabajar con propuestas localizadas, esta sección queda lista para desplegables o páginas por región/municipio.
+        </p>
+
+        <div class="grid cols-2" style="margin-top: 14px">
+          <div class="card" style="box-shadow:none">
+            <h3 style="margin:0 0 6px">Área Metropolitana</h3>
+            <p class="muted" style="margin:0">Infraestructura, vivienda, movilidad, seguridad y empleo.</p>
+          </div>
+          <div class="card" style="box-shadow:none">
+            <h3 style="margin:0 0 6px">Entorno Rural</h3>
+            <p class="muted" style="margin:0">Servicios, conectividad, economía local y sostenibilidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

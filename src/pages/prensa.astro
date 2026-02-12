@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout title="Prensa" description="Kit de prensa, contacto de medios y recursos.">
+  <PageHeader
+    title="Prensa"
+    description="Kit de prensa, contacto para medios y recursos descargables. (Plantilla lista.)"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 class="h2">Kit de prensa</h2>
+          <p class="muted" style="margin-top:0">
+            Logos, guía de estilo, fotos, biografías, notas oficiales.
+          </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap">
+            <a class="btn primary" href="/logo.png" download>Descargar logo</a>
+            <a class="btn" href="/contacto">Contacto medios</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Recursos</h2>
+          <ul class="muted" style="margin:0; padding-left: 18px">
+            <li>Notas de prensa (en Noticias)</li>
+            <li>Agenda de actos</li>
+            <li>Propuestas y programa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

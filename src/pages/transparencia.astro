@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout title="Transparencia" description="Financiación, estatutos, organigrama y memorias.">
+  <PageHeader
+    title="Transparencia"
+    description="Estructura para publicar financiación, estatutos, organigrama y memorias. (Contenido de ejemplo.)"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 class="h2">Financiación</h2>
+          <p class="muted" style="margin-top:0">Ingresos, gastos, donaciones y auditorías (si aplica).</p>
+          <ul class="muted" style="margin:0; padding-left: 18px">
+            <li>Resumen anual (PDF)</li>
+            <li>Detalle de partidas</li>
+            <li>Política de donaciones</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Estatutos y normas</h2>
+          <p class="muted" style="margin-top:0">Documentos fundacionales y reglamentos internos.</p>
+          <ul class="muted" style="margin:0; padding-left: 18px">
+            <li>Estatutos</li>
+            <li>Código ético</li>
+            <li>Protección de datos</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Organigrama</h2>
+          <p class="muted" style="margin-top:0">Estructura organizativa, portavocías y responsables.</p>
+          <div class="card" style="box-shadow:none">
+            <div class="pill">Demo</div>
+            <p class="muted" style="margin:10px 0 0">Consejo · Coordinación · Áreas · Territorio</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Memorias</h2>
+          <p class="muted" style="margin-top:0">Actividades, métricas y evaluación.</p>
+          <ul class="muted" style="margin:0; padding-left: 18px">
+            <li>Memoria 2026 (borrador)</li>
+            <li>Indicadores y cumplimiento</li>
+            <li>Actas y resoluciones</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

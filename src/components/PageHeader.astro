@@ -1,0 +1,15 @@
+---
+const { title, description } = Astro.props;
+---
+<section class="section compact">
+  <div class="container">
+    <div class="head card">
+      <h1 class="h2">{title}</h1>
+      {description && <p class="muted" style="margin:0; max-width: 75ch">{description}</p>}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head{ padding: 18px; }
+</style>

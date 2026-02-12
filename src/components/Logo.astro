@@ -1,0 +1,25 @@
+---
+const { size = 42, showName = true } = Astro.props;
+---
+<a class="logo" href="/" aria-label="FEROE - Inicio">
+  <img src="/logo.png" width={size} height={size} alt="Logo de FEROE" loading="eager" decoding="async" />
+  {showName && <span class="name">FEROE</span>}
+</a>
+
+<style>
+  .logo{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  img{
+    filter: drop-shadow(0 10px 16px rgba(14,27,45,0.14));
+  }
+  .name{
+    font-weight: 1000;
+    letter-spacing: 0.08em;
+    font-size: 15px;
+    color: var(--ink-900);
+  }
+</style>

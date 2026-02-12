@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout title="Donaciones" description="Apoya el proyecto de FEROE.">
+  <PageHeader
+    title="Donaciones"
+    description="Página preparada para integrar pasarela de pago y política de donaciones. (Sin cobros activos.)"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 class="h2">Apoya el proyecto</h2>
+          <p class="muted" style="margin-top:0">
+            Aquí integraremos opciones (transferencia, tarjeta, etc.) y la información legal correspondiente.
+          </p>
+          <div class="kpi" style="margin-top:14px">
+            <div class="item">
+              <div class="num">€10</div>
+              <div class="lbl">Aportación base</div>
+            </div>
+            <div class="item">
+              <div class="num">€25</div>
+              <div class="lbl">Materiales</div>
+            </div>
+            <div class="item">
+              <div class="num">€50</div>
+              <div class="lbl">Actos</div>
+            </div>
+            <div class="item">
+              <div class="num">€100</div>
+              <div class="lbl">Campaña</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Transparencia</h2>
+          <p class="muted" style="margin-top:0">
+            Publicaremos el uso de fondos y la política de donaciones en la sección de transparencia.
+          </p>
+          <a class="btn primary" href="/transparencia">Ver transparencia</a>
+          <div class="muted" style="margin-top:12px; font-size: 13px">
+            Nota: este bloque es demo. No se recopilan datos ni se procesa pago en esta plantilla.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

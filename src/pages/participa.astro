@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout title="Participa" description="Afiliación, voluntariado y contacto con FEROE.">
+  <PageHeader
+    title="Participa"
+    description="Afiliación, voluntariado y contacto. Formularios preparados (pendiente de conectar backend o servicio)."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-3">
+        <div class="card">
+          <h3 style="margin:0 0 8px">Hazte afiliado</h3>
+          <p class="muted" style="margin:0 0 14px">
+            Recibe información interna, participa en votaciones y construye el programa.
+          </p>
+          <a class="btn primary" href="#form">Solicitar afiliación</a>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px">Voluntariado</h3>
+          <p class="muted" style="margin:0 0 14px">
+            Organización, comunicación, territorio, logística de actos.
+          </p>
+          <a class="btn" href="#form">Quiero ayudar</a>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px">Contacto directo</h3>
+          <p class="muted" style="margin:0 0 14px">
+            Para propuestas, dudas, medios o coordinación.
+          </p>
+          <a class="btn ghost" href="/contacto">Ir a contacto</a>
+        </div>
+      </div>
+
+      <div class="section"></div>
+
+      <div class="card" id="form">
+        <h2 class="h2">Formulario (demo)</h2>
+        <p class="muted" style="margin-top: 0">
+          Este formulario no envía nada todavía. Si lo desplegáis en Netlify, se puede activar con “Netlify Forms”,
+          o conectar a un endpoint propio.
+        </p>
+
+        <form class="grid cols-2" method="post">
+          <div>
+            <label for="name">Nombre</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Tu nombre" />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" />
+          </div>
+
+          <div>
+            <label for="role">Quiero</label>
+            <select id="role" name="role">
+              <option>Afiliarme</option>
+              <option>Ser voluntario/a</option>
+              <option>Recibir información</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="where">Territorio</label>
+            <input id="where" name="where" placeholder="Ciudad / distrito / región" />
+          </div>
+
+          <div style="grid-column: 1 / -1">
+            <label for="msg">Mensaje</label>
+            <textarea id="msg" name="msg" placeholder="Cuéntanos en qué te gustaría participar..."></textarea>
+          </div>
+
+          <div style="grid-column: 1 / -1; display:flex; gap:12px; flex-wrap:wrap">
+            <button class="btn primary" type="submit">Enviar</button>
+            <a class="btn" href="/transparencia">Ver transparencia</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

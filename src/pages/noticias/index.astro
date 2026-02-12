@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('noticias'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title="Noticias" description="Comunicados, blog y notas de prensa de FEROE.">
+  <PageHeader
+    title="Noticias"
+    description="Comunicados, notas de prensa y actualizaciones. Publicación en Markdown mediante Content Collections."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-2">
+        {posts.map((p) => (
+          <a class="card post" href={`/noticias/${p.slug}`}>
+            <div class="meta">
+              <span class="pill" style="padding:6px 10px">Noticia</span>
+              <span class="muted">{p.data.date.toLocaleDateString('es-ES')}</span>
+            </div>
+            <h2 class="h2" style="margin-top:10px">{p.data.title}</h2>
+            <p class="muted" style="margin:0">{p.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .post{ text-decoration: none; }
+    .post:hover{ text-decoration: none; border-color: rgba(44,189,191,0.35); }
+    .meta{ display:flex; gap:10px; align-items:center; }
+  </style>
+</BaseLayout>

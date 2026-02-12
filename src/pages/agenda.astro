@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const eventos = [
+  { date: '2026-02-22', time: '12:00', title: 'Encuentro abierto', place: 'Por definir', note: 'Presentación y turno de preguntas.' },
+  { date: '2026-02-25', time: '19:00', title: 'Reunión de coordinación', place: 'Online', note: 'Sesión interna (voluntariado).' },
+  { date: '2026-02-28', time: '18:30', title: 'Presentación de propuestas', place: 'Por definir', note: 'Bloques temáticos y participación.' },
+];
+---
+<BaseLayout title="Agenda" description="Agenda de actos y encuentros de FEROE.">
+  <PageHeader
+    title="Agenda de actos"
+    description="Listado provisional. Aquí podemos conectar un calendario, formularios de inscripción y página por evento."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="card">
+        <div class="grid" style="gap: 12px">
+          {eventos.map((e) => (
+            <div class="row">
+              <div class="when">
+                <div class="d">{new Date(e.date).toLocaleDateString('es-ES', { weekday: 'short', day: '2-digit', month: 'short' })}</div>
+                <div class="muted">{e.time}</div>
+              </div>
+              <div class="what">
+                <div class="t">{e.title}</div>
+                <div class="muted">{e.place} · {e.note}</div>
+              </div>
+              <div class="act">
+                <a class="btn ghost" href="/contacto">Preguntar</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .row{
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(14,27,45,0.12);
+      background: rgba(255,255,255,0.78);
+    }
+    .d{ font-weight: 950; color: var(--primary-700); }
+    .t{ font-weight: 950; letter-spacing: -0.01em; }
+    @media (min-width: 860px){
+      .row{ grid-template-columns: 160px 1fr auto; align-items: center; }
+    }
+  </style>
+</BaseLayout>

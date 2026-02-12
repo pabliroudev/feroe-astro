@@ -1,0 +1,163 @@
+---
+import Logo from './Logo.astro';
+const links = [
+  { href: '/quienes-somos', label: 'Quiénes somos' },
+  { href: '/programa', label: 'Programa' },
+  { href: '/noticias', label: 'Noticias' },
+  { href: '/agenda', label: 'Agenda' },
+  { href: '/transparencia', label: 'Transparencia' },
+  { href: '/prensa', label: 'Prensa' },
+  { href: '/contacto', label: 'Contacto' },
+];
+---
+<header class="header">
+  <div class="container inner">
+    <Logo />
+
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-button>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav class="nav" data-nav>
+      <ul>
+        {links.map((l) => (
+          <li><a href={l.href}>{l.label}</a></li>
+        ))}
+      </ul>
+      <div class="cta">
+        <a class="btn ghost" href="/participa">Participa</a>
+        <a class="btn primary" href="/donaciones">Donaciones</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector('[data-menu-button]');
+  const nav = document.querySelector('[data-nav]');
+  if (btn && nav) {
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+</script>
+
+<style>
+  .header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+    background: rgba(246, 251, 251, 0.68);
+    border-bottom: 1px solid rgba(14,27,45,0.10);
+  }
+  .inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px var(--pad);
+  }
+  .nav{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  ul{
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 14px;
+  }
+  a{
+    font-weight: 750;
+    color: var(--ink-700);
+    text-decoration: none;
+  }
+  a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+  .cta{ display: none; gap: 10px; align-items: center; }
+
+  .menu-btn{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid rgba(14,27,45,0.14);
+    border-radius: 12px;
+    padding: 10px;
+    background: rgba(255,255,255,0.75);
+    cursor: pointer;
+  }
+  .menu-btn:focus-visible{ outline: none; box-shadow: var(--focus); }
+  .bar{
+    width: 22px;
+    height: 2px;
+    background: var(--ink-900);
+    border-radius: 999px;
+  }
+
+  /* móvil */
+  .nav{
+    position: fixed;
+    inset: 72px 12px auto 12px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(14,27,45,0.14);
+    box-shadow: var(--shadow);
+  }
+  .nav.open{ display: flex; }
+  .nav ul{ display: grid; gap: 10px; }
+  .nav ul a{
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(44,189,191,0.06);
+    border: 1px solid rgba(44,189,191,0.12);
+  }
+  .nav .cta{ display: grid; gap: 10px; }
+
+  @media (min-width: 960px){
+  .menu-btn{ display: none; }
+
+  .nav{
+    position: static;
+    inset: auto;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  /* ✅ IMPORTANTE: sobreescribe el "grid" del móvil */
+  .nav ul{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* ✅ IMPORTANTE: sobreescribe el "grid" del móvil */
+  .nav .cta{
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .nav ul a{
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+}
+
+</style>

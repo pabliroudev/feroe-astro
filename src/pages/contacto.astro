@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<BaseLayout title="Contacto" description="Contacto y sedes (si aplica) de FEROE.">
+  <PageHeader
+    title="Contacto"
+    description="Formulario y datos de contacto. (Contenido y sedes por definir.)"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 class="h2">Escríbenos</h2>
+          <form class="grid" method="post">
+            <div>
+              <label for="name">Nombre</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Tu nombre" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" />
+            </div>
+            <div>
+              <label for="subject">Asunto</label>
+              <input id="subject" name="subject" placeholder="Ej. propuesta, prensa, afiliación..." />
+            </div>
+            <div>
+              <label for="msg">Mensaje</label>
+              <textarea id="msg" name="msg" placeholder="Tu mensaje..."></textarea>
+            </div>
+            <button class="btn primary" type="submit">Enviar</button>
+            <div class="muted" style="font-size: 13px">
+              Demo: este formulario no está conectado. Se puede conectar a backend propio, Netlify Forms, etc.
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Datos</h2>
+          <p class="muted" style="margin-top:0">
+            Añadiremos correo general, teléfonos, horario y sedes.
+          </p>
+
+          <div class="card" style="box-shadow:none">
+            <div class="pill">Email (placeholder)</div>
+            <p class="muted" style="margin:10px 0 0">contacto@feroe.org</p>
+          </div>
+
+          <div class="card" style="box-shadow:none; margin-top:12px">
+            <div class="pill">Sedes</div>
+            <p class="muted" style="margin:10px 0 0">Por definir</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

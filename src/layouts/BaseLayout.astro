@@ -1,0 +1,32 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const {
+  title = 'FEROE',
+  description = 'Web oficial de FEROE: propuestas, agenda, noticias, transparencia y participación.',
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title === 'FEROE' ? 'FEROE' : `${title} · FEROE`;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2CBDBF" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <Header />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
