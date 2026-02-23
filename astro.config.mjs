@@ -1,7 +1,7 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import netlify from "@astrojs/netlify";
 
 export default defineConfig({
-  // Cambia esto cuando tengas dominio real (mejora SEO y RSS/sitemap si los activas)
-  site: 'https://feroe.example',
-  
+  output: "server",
+  adapter: netlify(),
 });

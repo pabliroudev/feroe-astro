@@ -1,6 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
+
+const candidatos = [
+  {
+    nombre: "Klara Sørensen",
+    cargo: "Líder del partido",
+    foto: "klara.jpeg",
+    descripcion: "Klara Sørensen es una política feroesa nacida en Tórshvan el 15 de octubre de 1986. De madre diplomática y padre ingeniero de telecomunicaciones, Sørensen mostró interés por la política desde joven, participando en la vida cultural y política del archipiélago. Cursó el doble grado de Ciencia Política y Relaciones Internacionales en la Universidad de Cambridge; ha realizado dos másters, uno en Procesos de Autodeterminación y Sistemas Políticos Nórdicos en la Universidad de las Islas Feroe y otro en Sistemas Electorales y Prevención contra la Corrupción en la Universidad Autónoma de Barcelona. Durante su etapa universitaria participó en movimientos juveniles vinculados a la izquierda y al independientismo democrático. Habla de manera fluida el danés, feroés, español, catalán, inglés, francés y árabe. Se incorporó al partido de la República en su juventud, destacando por su capacidad de oratoria y enfoque progresista. Fue elegida diputada en el Løgting, centrando su labor en políticas sociales, igualdad de género y sostenibilidad ambiental. Años más tarde, en 2019, asumió el liderazgo del partido.",
+    destacado: true,
+  },
+  {
+    nombre: "Andrias Poulsen",
+    cargo: "Director de Comunicación",
+    foto: "andrias.jpeg",
+    descripcion: "Poulsen nació en Tórshavn el 19 de abril de 1990. Estudió Ciencias Políticas y Comunicación en Fróðskaparsetur Føroya (Universidad de las Islas Feroe), donde se interesó especialmente por la Comunicación Política, participando en revistas estudiantiles y en Unga Tjóðveldið (la juventud del partido República). Cursó parte de la carrera en la Universidad de Bergen (Noruega) gracias a un programa de intercambios, donde perfeccionó el uso de idiomas como el noruego o el inglés y el conocimiento de estudios nórdicos y de política comparada. Su formación culminaría con un Máster en Relaciones Internacionales en la Universidad de Oslo, que le proporcionó conocimientos en Diplomacia y Derecho Internacional. Actualmente es el Director de Comunicación del Partido República de las Islas Feroe. Utiliza su formación en Ciencia Política, Diplomacia e idiomas (inglés, feroés, danés y noruego) para ocupar un puesto clave en el partido, no como un “político clásico” sino como ideólogo y comunicador.",
+  },
+  {
+    nombre: "Elin Joensen",
+    cargo: "Jefa de campaña",
+    foto: "elin.jpeg",
+    descripcion: "Elin Joensen nació el 14 de marzo de 1988 en Tórshavn, Islas Feroe. Estudió Ciencias Políticas y Administración Pública en la Universidad de las Islas Feroe, donde se especializó en sistemas de gobierno nórdicos y participación ciudadana. Completó su formación con un máster en Comunicación Política y Estrategia Electoral en la Universidad de Copenhague. Inició su trayectoria profesional como asesora parlamentaria y analista de políticas públicas, trabajando en campañas locales y en el diseño de estrategias de movilización juvenil. Actualmente es la jefa de campaña del partido República de Feroe."
+  },
+  {
+    nombre: "Friederik Nielsen",
+    cargo: "Community Manager",
+    foto: "friederik.jpeg",
+    descripcion: "Friederik Nielsen nació el 22 de septiembre de 1985 en Klaksvík, Islas Feroe. Cursó estudios en Ciencias Políticas y Filosofía en la Universidad de las Islas Feroe, donde centró su investigación en los modelos de democracia participativa y las tradiciones asamblearias nórdicas. Posteriormente amplió su formación con un máster en Gobernanza y Análisis Político en la Universidad de Aarhus, Dinamarca. Comenzó su carrera profesional como investigador en el Instituto de Historia Social y Política de Tórshavn, colaborando asiduamente con medios de comunicación como analista político y columnista. Su compromiso con el activismo social lo llevó a implicarse en movimientos vecinales y asambleas ciudadanas, donde desarrolló las bases de su pensamiento político centrado en la soberanía popular. En la actualidad ejerce como Portavoz del grupo político Tjodveld La República, siendo la cara visible y principal portavoz de la formación en el debate público y las instituciones. Para él, las Islas Feroe ocupan un lugar especial y central en su corazón porque fue en sus pequeñas comunidades costeras donde comprendió que la política no es una cuestión de grandes discursos, sino de escuchar el latido de la gente corriente y devolverles la voz que los sistemas alejados de la ciudadanía les han arrebatado."
+  },
+  {
+    nombre: "Sofia Petersen",
+    cargo: "Community Manager",
+    foto: "sofia.jpeg",
+    descripcion: "Sofía Petersen es una profesional especializada en comunicación política y estrategia digital, con experiencia en campañas electorales y gestión de imagen pública de partidos emergentes. Nacida el 6 de Diciembre del 1987 y graduada en Comunicación Audiovisual por la Universidad de Aalborg (Dinamarca), amplió su formación con un Máster en Comunicación Política y Gestión de Campañas Electorales en la Universidad de Copenhague. Posteriormente completó un curso de especialización en Estrategia Digital y Análisis de Opinión Pública, centrado en el uso de datos, segmentación electoral y gestión de redes sociales en contextos políticos. Actualmente trabaja como Community Manager del Partido Republicano Feroés, donde se encarga de diseñar la estrategia de comunicación en redes sociales, coordinar campañas digitales, monitorizar la percepción pública del partido y elaborar contenidos dirigidos especialmente al electorado joven. Dentro del partido ha ganado relevancia por su capacidad para responder a crisis comunicativas y adaptar el discurso político a formatos digitales. En el sistema político feroés, Sofía representa el perfil de nueva generación de consultores políticos: profesionales con fuerte base técnica, orientación a los datos y gran dominio del entorno digital. Sus objetivos a medio plazo incluyen asumir la dirección de comunicación del partido y participar directamente en la planificación estratégica de campañas nacionales. Se la considera una figura pragmática, con sensibilidad hacia temas de transparencia institucional, participación ciudadana y modernización de la comunicación política"
+  },
+  {
+    nombre: "Hannah Olsen",
+    cargo: "Community Manager",
+    foto: "hannah.jpeg",
+    descripcion: "Directora de redes sociales/ Community Manager del Partido República en las islas Feroes. Nació el 27 de julio de 1998 en Oslo, de familia con raíces feroeses. Su madre estudió Ciencias de la Administración y su padre Derecho, en la Universidad de Estudió un doble grado de Relaciones Públicas-Marketing y Organización de eventos, protocolo y comunicación corporativa en la Universidad de Oslo, en Noruega; para especializarse, posteriormente, cursando un doctorado en Campañas nórdicas y el uso propagandístico de las redes sociales. Habla 6 idiomas de manera fluida entre los que se encuentran el feroés, danés, noruego, español, inglés y alemán.",
+  },
+];
+
+
+const principal = candidatos.find((c) => c.destacado) ?? candidatos[0];
+const resto = candidatos.filter((c) => c !== principal);
+
 ---
 <BaseLayout title="Quiénes somos" description="Historia, valores y equipo de FEROE.">
   <PageHeader
@@ -33,18 +78,287 @@ import PageHeader from '../components/PageHeader.astro';
       <div class="section compact"></div>
 
       <div class="card">
-        <h2 class="h2">Equipo (demo)</h2>
-        <div class="grid cols-3" style="margin-top: 14px">
-          {['Portavocía', 'Organización', 'Comunicación'].map((role) => (
-            <div class="card" style="box-shadow:none">
-              <div class="pill">{role}</div>
-              <p class="muted" style="margin:10px 0 0">
-                Nombre Apellido · breve descripción / responsabilidades.
-              </p>
-            </div>
-          ))}
+        <h2 class="h2">Equipo</h2>
+        <p class="muted" style="margin: 6px 0 0">
+          Conoce a las personas que lideran y representan el proyecto.
+        </p>
+
+        <div class="team-area" style="margin-top: 18px">
+          <!-- Principal centrado -->
+          <div class="team-featured">
+            <article
+              class="flip-card is-featured"
+              tabindex="0"
+              aria-label={`Perfil de ${principal.nombre}. Pulsa para ver descripción.`}
+            >
+              <div class="flip-inner">
+                <!-- FRONT -->
+                <div class="flip-face flip-front">
+                  <img
+                    class="flip-photo"
+                    src={`${principal.foto}`}
+                    alt={`Foto de ${principal.nombre}`}
+                    loading="lazy"
+                  />
+                  <div class="flip-footer">
+                    <h3 class="flip-name">{principal.nombre}</h3>
+                    <p class="flip-role">{principal.cargo}</p>
+                  </div>
+                </div>
+
+                <!-- BACK -->
+                <div class="flip-face flip-back">
+                  <div class="flip-back-inner">
+                    <p class="flip-role back">{principal.cargo}</p>
+                    <h3 class="flip-name back">{principal.nombre}</h3>
+                    <p class="flip-desc">{principal.descripcion}</p>
+                    <p class="flip-hint">Click/tap para volver</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Resto en grid -->
+          <div class="team-grid">
+            {resto.map((p) => (
+              <article
+                class="flip-card"
+                tabindex="0"
+                aria-label={`Perfil de ${p.nombre}. Pulsa para ver descripción.`}
+              >
+                <div class="flip-inner">
+                  <!-- FRONT -->
+                  <div class="flip-face flip-front">
+                    <img
+                      class="flip-photo"
+                      src={`${p.foto}`}
+                      alt={`Foto de ${p.nombre}`}
+                      loading="lazy"
+                    />
+                    <div class="flip-footer">
+                      <h3 class="flip-name">{p.nombre}</h3>
+                      <p class="flip-role">{p.cargo}</p>
+                    </div>
+                  </div>
+
+                  <!-- BACK -->
+                  <div class="flip-face flip-back">
+                    <div class="flip-back-inner">
+                      <p class="flip-role back">{p.cargo}</p>
+                      <h3 class="flip-name back">{p.nombre}</h3>
+                      <p class="flip-desc">{p.descripcion}</p>
+                      <p class="flip-hint">Click/tap para volver</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <style>
+    /* ====== Layout como la referencia ====== */
+    .team-area{
+      display: grid;
+      gap: 22px;
+    }
+
+    .team-featured{
+      display: flex;
+      justify-content: center;
+    }
+
+    .team-grid{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    /* ====== Tarjeta flip ====== */
+    .flip-card{
+      width: 100%;
+      max-width: 360px;
+      border-radius: 8px;
+      perspective: 1200px;
+      cursor: pointer;
+      outline: none;
+      justify-self: center;
+    }
+
+    .flip-card.is-featured{
+      max-width: 380px;
+    }
+
+    .flip-card:focus-visible{
+      box-shadow: 0 0 0 3px rgba(20,184,166,.35), 0 12px 30px rgba(2,6,23,.12);
+    }
+
+    .flip-inner{
+      position: relative;
+      height: 285px;              /* altura consistente */
+      transform-style: preserve-3d;
+      transition: transform .55s cubic-bezier(.2,.8,.2,1);
+    }
+
+    /* Hover -> gira (solo donde hay hover) */
+    @media (hover:hover){
+      .flip-card:hover .flip-inner{ transform: rotateY(180deg); }
+    }
+
+    /* Click -> gira (clase por JS) */
+    .flip-card.is-flipped .flip-inner{ transform: rotateY(180deg); }
+
+    .flip-face{
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(2,6,23,.12);
+}
+
+
+    /* ====== Front ====== */
+    .flip-photo{
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+      display: block;
+      background: #e9eef2;
+    }
+
+    .flip-footer{
+      height: calc(285px - 185px);
+      display: grid;
+      place-content: center;
+      gap: 6px;
+      padding: 12px 14px 14px;
+      background: #fff;
+    }
+
+    .flip-name{
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.15;
+      font-weight: 800;
+      text-align: center;
+      color: rgba(15,23,42,.92);
+    }
+
+    .flip-role{
+      margin: 0;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 900;
+      text-align: center;
+      color: rgba(15,23,42,.60);
+    }
+
+    /* ====== Back ====== */
+    .flip-back{
+      transform: rotateY(180deg);
+      background: radial-gradient(120% 120% at 20% 10%, rgba(20,184,166,.18), rgba(2,132,199,.08));
+    }
+
+    .flip-back-inner{
+  height: 100%;
+  padding: 18px;
+  display: grid;
+  align-content: start;     /* antes estaba center */
+  gap: 10px;
+  background: rgba(255,255,255,.78);
+
+  overflow: auto;          /* para descripciones largas */
+}
+
+
+    .flip-name.back{ text-align: left; font-size: 18px; }
+    .flip-role.back{ text-align: left; }
+
+    .flip-desc{
+      margin: 0;
+      color: rgba(15,23,42,.78);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .flip-hint{
+      margin: 10px 0 0;
+      font-size: 12px;
+      color: rgba(15,23,42,.55);
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 980px){
+      .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 620px){
+      .team-grid{ grid-template-columns: 1fr; }
+      .flip-inner{ height: 305px; }
+      .flip-photo{ height: 205px; }
+      .flip-footer{ height: calc(305px - 205px); }
+    }
+
+    /* ====== Reduced motion ====== */
+    @media (prefers-reduced-motion: reduce){
+      .flip-inner{ transition: none; }
+      .flip-card:hover .flip-inner,
+      .flip-card.is-flipped .flip-inner{ transform: none; }
+      .flip-back{ display: none; }
+    }
+    /* --- Centrar última fila cuando sobran 1 o 2 tarjetas --- */
+
+/* Si la última fila tiene 1 tarjeta: colócala en la columna 2 */
+.team-grid > :last-child:nth-child(3n + 1) {
+  grid-column: 2;
+}
+
+/* Si la última fila tiene 2 tarjetas: mueve la primera de esas dos a la columna 2 */
+.team-grid > :nth-last-child(2):nth-child(3n + 1) {
+  grid-column: 2;
+}
+
+@media (hover:hover){
+  .flip-card:hover .flip-inner{ transform: rotateY(180deg); }
+}
+
+    
+  </style>
+
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.flip-card');
+
+    cards.forEach((card) => {
+      const toggle = () => {
+        // Solo una abierta a la vez
+        cards.forEach((c) => c !== card && c.classList.remove('is-flipped'));
+        card.classList.toggle('is-flipped');
+      };
+
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggle();
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    });
+  });
+</script>
+
 </BaseLayout>

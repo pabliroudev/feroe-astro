@@ -10,6 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.0"
+    "@supabase/supabase-js": "^2.95.3",
+    "astro": "^4.16.0",
+    "netlify": "^23.15.1"
+  },
+  "devDependencies": {
+    "@astrojs/netlify": "^5.5.4"
   }
 }

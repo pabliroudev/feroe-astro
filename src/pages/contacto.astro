@@ -13,28 +13,70 @@ import PageHeader from '../components/PageHeader.astro';
       <div class="grid cols-2">
         <div class="card">
           <h2 class="h2">Escríbenos</h2>
-          <form class="grid" method="post">
-            <div>
-              <label for="name">Nombre</label>
-              <input id="name" name="name" autocomplete="name" placeholder="Tu nombre" />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" />
-            </div>
-            <div>
-              <label for="subject">Asunto</label>
-              <input id="subject" name="subject" placeholder="Ej. propuesta, prensa, afiliación..." />
-            </div>
-            <div>
-              <label for="msg">Mensaje</label>
-              <textarea id="msg" name="msg" placeholder="Tu mensaje..."></textarea>
-            </div>
-            <button class="btn primary" type="submit">Enviar</button>
-            <div class="muted" style="font-size: 13px">
-              Demo: este formulario no está conectado. Se puede conectar a backend propio, Netlify Forms, etc.
-            </div>
-          </form>
+          
+          <form class="grid" id="contacto-form" method="post" action="/api/contacto">
+  <!-- Honeypot anti-spam -->
+  <input
+    type="text"
+    name="web"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+    style="position:absolute; left:-9999px; width:1px; height:1px;"
+  />
+
+  <div>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required />
+  </div>
+
+  <div>
+    <label for="asunto">Asunto</label>
+    <input id="asunto" name="asunto" placeholder="Ej. propuesta, prensa, afiliación..." />
+  </div>
+
+  <div>
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje..." required></textarea>
+  </div>
+
+  <button class="btn primary" type="submit">Enviar</button>
+
+  <p id="contacto-status" class="muted" style="font-size: 13px; margin: 0;"></p>
+</form>
+
+<script>
+  const form = document.getElementById("contacto-form");
+  const statusEl = document.getElementById("contacto-status");
+
+  if (!(form instanceof HTMLFormElement)) {
+    console.warn("No se encontró el formulario #contacto-form");
+  } else if (!(statusEl instanceof HTMLElement)) {
+    console.warn("No se encontró el elemento #contacto-status");
+  } else {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Enviando…";
+
+      const res = await fetch(form.action, { method: "POST", body: new FormData(form) });
+      const json = await res.json().catch(() => ({}));
+
+      if (res.ok && json.ok) {
+        form.reset();
+        statusEl.textContent = "Mensaje enviado. Gracias.";
+      } else {
+        statusEl.textContent = json.error || "No se pudo enviar el mensaje.";
+      }
+    });
+  }
+</script>
+
+
         </div>
 
         <div class="card">
