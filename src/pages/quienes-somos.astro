@@ -87,276 +87,305 @@ const resto = candidatos.filter((c) => c !== principal);
           <!-- Principal centrado -->
           <div class="team-featured">
             <article
-              class="flip-card is-featured"
+              class="member-card is-featured"
               tabindex="0"
+              data-index="0"
+              data-desc={principal.descripcion}
               aria-label={`Perfil de ${principal.nombre}. Pulsa para ver descripción.`}
             >
-              <div class="flip-inner">
-                <!-- FRONT -->
-                <div class="flip-face flip-front">
-                  <img
-                    class="flip-photo"
-                    src={`${principal.foto}`}
-                    alt={`Foto de ${principal.nombre}`}
-                    loading="lazy"
-                  />
-                  <div class="flip-footer">
-                    <h3 class="flip-name">{principal.nombre}</h3>
-                    <p class="flip-role">{principal.cargo}</p>
-                  </div>
-                </div>
-
-                <!-- BACK -->
-                <div class="flip-face flip-back">
-                  <div class="flip-back-inner">
-                    <p class="flip-role back">{principal.cargo}</p>
-                    <h3 class="flip-name back">{principal.nombre}</h3>
-                    <p class="flip-desc">{principal.descripcion}</p>
-                    <p class="flip-hint">Click/tap para volver</p>
-                  </div>
-                </div>
+              <img
+                class="member-photo"
+                src={`${principal.foto}`}
+                alt={`Foto de ${principal.nombre}`}
+                loading="lazy"
+              />
+              <div class="member-footer">
+                <h3 class="member-name">{principal.nombre}</h3>
+                <p class="member-role">{principal.cargo}</p>
               </div>
             </article>
           </div>
 
           <!-- Resto en grid -->
           <div class="team-grid">
-            {resto.map((p) => (
+            {resto.map((p, i) => (
               <article
-                class="flip-card"
+                class="member-card"
                 tabindex="0"
+                data-index={String(i + 1)}
+                data-desc={p.descripcion}
                 aria-label={`Perfil de ${p.nombre}. Pulsa para ver descripción.`}
               >
-                <div class="flip-inner">
-                  <!-- FRONT -->
-                  <div class="flip-face flip-front">
-                    <img
-                      class="flip-photo"
-                      src={`${p.foto}`}
-                      alt={`Foto de ${p.nombre}`}
-                      loading="lazy"
-                    />
-                    <div class="flip-footer">
-                      <h3 class="flip-name">{p.nombre}</h3>
-                      <p class="flip-role">{p.cargo}</p>
-                    </div>
-                  </div>
-
-                  <!-- BACK -->
-                  <div class="flip-face flip-back">
-                    <div class="flip-back-inner">
-                      <p class="flip-role back">{p.cargo}</p>
-                      <h3 class="flip-name back">{p.nombre}</h3>
-                      <p class="flip-desc">{p.descripcion}</p>
-                      <p class="flip-hint">Click/tap para volver</p>
-                    </div>
-                  </div>
+                <img
+                  class="member-photo"
+                  src={`${p.foto}`}
+                  alt={`Foto de ${p.nombre}`}
+                  loading="lazy"
+                />
+                <div class="member-footer">
+                  <h3 class="member-name">{p.nombre}</h3>
+                  <p class="member-role">{p.cargo}</p>
                 </div>
               </article>
             ))}
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- Modal popup (fuera de cualquier contenedor con backdrop-filter) -->
+  <div class="profile-overlay" id="profileOverlay" aria-hidden="true">
+    <div class="profile-modal" role="dialog" aria-modal="true">
+      <button class="profile-close" id="profileClose" aria-label="Cerrar">&times;</button>
+      <p class="profile-role-label" id="modalRole"></p>
+      <h3 class="profile-name-label" id="modalName"></h3>
+      <div class="profile-content">
+        <img class="profile-img" id="modalImg" src="" alt="" />
+        <p class="profile-desc" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
   <style>
-    /* ====== Layout como la referencia ====== */
-    .team-area{
+    /* ====== Layout ====== */
+    .team-area {
       display: grid;
       gap: 22px;
     }
-
-    .team-featured{
+    .team-featured {
       display: flex;
       justify-content: center;
     }
-
-    .team-grid{
+    .team-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
     }
 
-    /* ====== Tarjeta flip ====== */
-    .flip-card{
+    /* ====== Tarjeta miembro ====== */
+    .member-card {
       width: 100%;
       max-width: 360px;
-      border-radius: 8px;
-      perspective: 1200px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(2, 6, 23, .10);
       cursor: pointer;
       outline: none;
       justify-self: center;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
-
-    .flip-card.is-featured{
+    .member-card.is-featured {
       max-width: 380px;
     }
-
-    .flip-card:focus-visible{
-      box-shadow: 0 0 0 3px rgba(20,184,166,.35), 0 12px 30px rgba(2,6,23,.12);
+    .member-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(2, 6, 23, .16);
     }
-
-    .flip-inner{
-      position: relative;
-      height: 285px;              /* altura consistente */
-      transform-style: preserve-3d;
-      transition: transform .55s cubic-bezier(.2,.8,.2,1);
+    .member-card:focus-visible {
+      box-shadow: 0 0 0 3px rgba(20, 184, 166, .4);
     }
-
-    /* Hover -> gira (solo donde hay hover) */
-    @media (hover:hover){
-      .flip-card:hover .flip-inner{ transform: rotateY(180deg); }
-    }
-
-    /* Click -> gira (clase por JS) */
-    .flip-card.is-flipped .flip-inner{ transform: rotateY(180deg); }
-
-    .flip-face{
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(2,6,23,.12);
-}
-
-
-    /* ====== Front ====== */
-    .flip-photo{
+    .member-photo {
       width: 100%;
-      height: 185px;
+      height: 200px;
       object-fit: cover;
       display: block;
       background: #e9eef2;
     }
-
-    .flip-footer{
-      height: calc(285px - 185px);
-      display: grid;
-      place-content: center;
-      gap: 6px;
-      padding: 12px 14px 14px;
-      background: #fff;
+    .member-footer {
+      padding: 14px 16px 16px;
+      text-align: center;
     }
-
-    .flip-name{
+    .member-name {
       margin: 0;
       font-size: 16px;
-      line-height: 1.15;
       font-weight: 800;
-      text-align: center;
-      color: rgba(15,23,42,.92);
+      line-height: 1.2;
+      color: rgba(15, 23, 42, .92);
+    }
+    .member-role {
+      margin: 5px 0 0;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: rgba(15, 23, 42, .55);
     }
 
-    .flip-role{
+    /* ====== Overlay + Modal ====== */
+    .profile-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 20, 40, .55);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+    .profile-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .profile-modal {
+      position: relative;
+      width: min(92vw, 780px);
+      max-height: 88vh;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 24px 64px rgba(2, 6, 23, .28);
+      padding: 32px 34px 28px;
+      transform: translateY(24px) scale(.97);
+      transition: transform .3s ease;
+    }
+    .profile-overlay.is-open .profile-modal {
+      transform: translateY(0) scale(1);
+    }
+    .profile-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, .08);
+      color: rgba(15, 23, 42, .7);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s ease;
+    }
+    .profile-close:hover {
+      background: rgba(15, 23, 42, .16);
+    }
+    .profile-role-label {
       margin: 0;
       font-size: 11px;
       letter-spacing: .14em;
       text-transform: uppercase;
-      font-weight: 900;
-      text-align: center;
-      color: rgba(15,23,42,.60);
+      font-weight: 800;
+      color: rgba(15, 23, 42, .55);
     }
-
-    /* ====== Back ====== */
-    .flip-back{
-      transform: rotateY(180deg);
-      background: radial-gradient(120% 120% at 20% 10%, rgba(20,184,166,.18), rgba(2,132,199,.08));
+    .profile-name-label {
+      margin: 4px 0 18px;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: rgba(15, 23, 42, .92);
     }
-
-    .flip-back-inner{
-  height: 100%;
-  padding: 18px;
-  display: grid;
-  align-content: start;     /* antes estaba center */
-  gap: 10px;
-  background: rgba(255,255,255,.78);
-
-  overflow: auto;          /* para descripciones largas */
-}
-
-
-    .flip-name.back{ text-align: left; font-size: 18px; }
-    .flip-role.back{ text-align: left; }
-
-    .flip-desc{
+    .profile-content {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .profile-img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+      background: #e9eef2;
+    }
+    .profile-desc {
       margin: 0;
-      color: rgba(15,23,42,.78);
-      line-height: 1.6;
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(15, 23, 42, .78);
     }
 
-    .flip-hint{
-      margin: 10px 0 0;
-      font-size: 12px;
-      color: rgba(15,23,42,.55);
+    /* ====== Centrar última fila ====== */
+    .team-grid > :last-child:nth-child(3n + 1) {
+      grid-column: 2;
+    }
+    .team-grid > :nth-last-child(2):nth-child(3n + 1) {
+      grid-column: 2;
     }
 
     /* ====== Responsive ====== */
-    @media (max-width: 980px){
-      .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 980px) {
+      .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .team-grid > :last-child:nth-child(3n + 1) { grid-column: auto; }
+      .team-grid > :nth-last-child(2):nth-child(3n + 1) { grid-column: auto; }
     }
-
-    @media (max-width: 620px){
-      .team-grid{ grid-template-columns: 1fr; }
-      .flip-inner{ height: 305px; }
-      .flip-photo{ height: 205px; }
-      .flip-footer{ height: calc(305px - 205px); }
+    @media (max-width: 700px) {
+      .profile-content {
+        grid-template-columns: 1fr;
+      }
+      .profile-img {
+        max-width: 240px;
+        aspect-ratio: 1;
+      }
+      .profile-modal {
+        padding: 24px 20px 20px;
+      }
     }
-
-    /* ====== Reduced motion ====== */
-    @media (prefers-reduced-motion: reduce){
-      .flip-inner{ transition: none; }
-      .flip-card:hover .flip-inner,
-      .flip-card.is-flipped .flip-inner{ transform: none; }
-      .flip-back{ display: none; }
+    @media (max-width: 620px) {
+      .team-grid { grid-template-columns: 1fr; }
     }
-    /* --- Centrar última fila cuando sobran 1 o 2 tarjetas --- */
-
-/* Si la última fila tiene 1 tarjeta: colócala en la columna 2 */
-.team-grid > :last-child:nth-child(3n + 1) {
-  grid-column: 2;
-}
-
-/* Si la última fila tiene 2 tarjetas: mueve la primera de esas dos a la columna 2 */
-.team-grid > :nth-last-child(2):nth-child(3n + 1) {
-  grid-column: 2;
-}
-
-@media (hover:hover){
-  .flip-card:hover .flip-inner{ transform: rotateY(180deg); }
-}
-
-    
   </style>
 
   <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.flip-card');
+    const candidatos = document.querySelectorAll('.member-card');
+    const overlay = document.getElementById('profileOverlay');
+    const modalName = document.getElementById('modalName');
+    const modalRole = document.getElementById('modalRole');
+    const modalImg = document.getElementById('modalImg');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeBtn = document.getElementById('profileClose');
 
-    cards.forEach((card) => {
-      const toggle = () => {
-        // Solo una abierta a la vez
-        cards.forEach((c) => c !== card && c.classList.remove('is-flipped'));
-        card.classList.toggle('is-flipped');
-      };
-
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggle();
+    // Build data from DOM + hidden data
+    const data = [];
+    candidatos.forEach((card) => {
+      data.push({
+        nombre: card.querySelector('.member-name').textContent,
+        cargo: card.querySelector('.member-role').textContent,
+        foto: card.querySelector('.member-photo').getAttribute('src'),
+        descripcion: card.getAttribute('data-desc'),
       });
+    });
 
+    function openModal(i) {
+      const d = data[i];
+      if (!d) return;
+      modalName.textContent = d.nombre;
+      modalRole.textContent = d.cargo;
+      modalImg.src = d.foto;
+      modalImg.alt = 'Foto de ' + d.nombre;
+      modalDesc.textContent = d.descripcion;
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    candidatos.forEach((card, i) => {
+      card.addEventListener('click', () => openModal(i));
       card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggle();
-        }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(i); }
       });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
     });
   });
 </script>

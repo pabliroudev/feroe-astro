@@ -2,51 +2,172 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 
-const temas = [
-  { title: 'Economía y empleo', body: 'Medidas para crecimiento, empleo digno y tejido productivo.' },
-  { title: 'Servicios públicos', body: 'Sanidad, educación y cuidados: calidad, acceso y eficiencia.' },
-  { title: 'Vivienda', body: 'Oferta, rehabilitación, alquiler asequible y equilibrio urbano.' },
-  { title: 'Seguridad y convivencia', body: 'Prevención, proximidad y cooperación institucional.' },
-  { title: 'Transición ecológica', body: 'Energía, movilidad, agua y resiliencia climática.' },
-  { title: 'Instituciones', body: 'Reformas, transparencia y evaluación de políticas públicas.' },
+const propuestas = [
+  {
+    tema: 'Economía',
+    titulo: 'Fondo de innovación y PYMEs',
+    icono: '📈',
+    color: '#049689',
+    descripcion: 'Crear un fondo estatal de 100 millones de coronas danesas anuales para subsidiar startups tecnológicas, acuícolas y turísticas. Requiere una ley en el Løgting y capital inicial en el Gobierno (Ministerio de Finanzas). Se necesitarían de 6-12 meses para crear la estructura y llamar a proyectos, participando tanto el Gobierno como los bancos locales.',
+  },
+  {
+    tema: 'Pesca',
+    titulo: 'I+D en pesca sostenible',
+    icono: '🐟',
+    color: '#2074a6',
+    descripcion: 'Financiar programas de I+D para técnicas de pesca selectiva y acuicultura con un presupuesto de 50 millones de coronas danesas al año. El plazo de implementación de 1 a 2 años. Así, se esperan innovaciones que aumenten rendimiento con menor esfuerzo pesquero y formación técnica para pescadores.',
+  },
+  {
+    tema: 'Relaciones Exteriores',
+    titulo: 'Proyecto de independencia progresiva',
+    icono: '🌍',
+    color: '#5c6bc0',
+    descripcion: 'Tener autogobierno en cada vez más temas, empezando por el sistema judicial supremo; llegando finalmente a un referéndum vinculante que cumpla con la independencia final de las Feroe a causa del derecho internacional de autodeterminación.',
+  },
+  {
+    tema: 'Bienestar social y salud',
+    titulo: 'Apoyo a familias jóvenes',
+    icono: '👨‍👩‍👧‍👦',
+    color: '#e5576c',
+    descripcion: 'Extender subsidios para guarderías e introducir 6 meses de permiso de paternidad retribuido adicional. El coste será de 100 millones de coronas danesas al año y necesitará de una ley tramitada por el Ministro de Finanzas y el Ministro de Educación.',
+  },
+  {
+    tema: 'Energía y medioambiente',
+    titulo: 'Conservación marina',
+    icono: '🌊',
+    color: '#0097a7',
+    descripcion: 'Declarar reservas marinas clave para proteger la biodiversidad. Tendrá cero costes directos pero implicará el diseño legal por parte del Ministro de Medio Ambiente.',
+  },
+  {
+    tema: 'Educación',
+    titulo: 'Becas y retorno de talento',
+    icono: '🎓',
+    color: '#f57c00',
+    descripcion: 'Crear becas integrales de 25 millones de coronas danesas al año para estudios típicos feroeses como las ciencias marinas, la ingeniería y las TIC; con un compromiso de retorno (2-3 años) a trabajar en Feroe. Los actores implicados serán el Ministro de Educación, junto con la provisión de fondos universitarios.',
+  },
+  {
+    tema: 'Cultura',
+    titulo: 'Fondo de cultura local',
+    icono: '🎭',
+    color: '#8e44ad',
+    descripcion: 'Incrementar en 50 millones de coronas danesas al año el presupuesto de la cultura para fomentar proyectos creativos y tradiciones, apoyando así a artistas y empresas culturales para exportar turismo.',
+  },
+  {
+    tema: 'Vivienda',
+    titulo: 'Revisión de subsidios hipotecarios',
+    icono: '🏠',
+    color: '#d4a34a',
+    descripcion: 'Reformar el subsidio de intereses (que, en la actualidad, se encuentra en un 35%), y reducirlo gradualmente para enfriar la demanda inmobiliaria (reasignando 50 millones de coronas danesas al año a vivienda social). Se requerirá una ley fiscal.',
+  },
 ];
 ---
 <BaseLayout title="Programa" description="Propuestas por temas y territorio.">
   <PageHeader
-    title="Programa / propuestas"
-    description="Estructura por temas y territorio. Aquí podemos añadir filtros, buscador y documentos descargables."
+    title="Programa Electoral"
+    description="Nuestras propuestas organizadas por áreas temáticas para las Islas Feroe."
   />
 
   <section class="section">
     <div class="container">
-      <div class="grid cols-3">
-        {temas.map((t) => (
-          <div class="card">
-            <h3 style="margin:0 0 8px; letter-spacing: -0.01em">{t.title}</h3>
-            <p class="muted" style="margin:0">{t.body}</p>
-          </div>
+      <div class="propuestas-grid">
+        {propuestas.map((p) => (
+          <article class="propuesta-card" style={`--accent: ${p.color}`}>
+            <div class="propuesta-icon-wrap">
+              <span class="propuesta-icon">{p.icono}</span>
+            </div>
+            <div class="propuesta-body">
+              <span class="propuesta-tema">{p.tema}</span>
+              <h3 class="propuesta-titulo">{p.titulo}</h3>
+              <p class="propuesta-desc">{p.descripcion}</p>
+            </div>
+          </article>
         ))}
-      </div>
-
-      <div class="section compact"></div>
-
-      <div class="card">
-        <h2 class="h2">Por territorio</h2>
-        <p class="muted" style="margin-top: 0">
-          Si vais a trabajar con propuestas localizadas, esta sección queda lista para desplegables o páginas por región/municipio.
-        </p>
-
-        <div class="grid cols-2" style="margin-top: 14px">
-          <div class="card" style="box-shadow:none">
-            <h3 style="margin:0 0 6px">Área Metropolitana</h3>
-            <p class="muted" style="margin:0">Infraestructura, vivienda, movilidad, seguridad y empleo.</p>
-          </div>
-          <div class="card" style="box-shadow:none">
-            <h3 style="margin:0 0 6px">Entorno Rural</h3>
-            <p class="muted" style="margin:0">Servicios, conectividad, economía local y sostenibilidad.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .propuestas-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) {
+    .propuestas-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .propuesta-card {
+    position: relative;
+    display: flex;
+    gap: 18px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 28px rgba(14, 27, 45, 0.08);
+    border-left: 4px solid var(--accent);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .propuesta-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(14, 27, 45, 0.14);
+  }
+
+  .propuesta-icon-wrap {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border-radius: 14px;
+    border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+  .propuesta-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .propuesta-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .propuesta-tema {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+
+  .propuesta-titulo {
+    margin: 10px 0 8px;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  .propuesta-desc {
+    margin: 0;
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: var(--ink-700);
+  }
+
+  @media (max-width: 500px) {
+    .propuesta-card {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

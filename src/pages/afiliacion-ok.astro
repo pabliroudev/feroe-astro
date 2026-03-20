@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { supabaseServer } from '../lib/supabaseServer';
+
+const sessionId = Astro.url.searchParams.get('session_id');
+
+let afiliacion: { id: string; nombre: string; apellidos: string; email: string; cuota_importe_centimos: number; numero_solicitud?: string | null } | null = null;
+
+if (sessionId) {
+  // Intentar primero con numero_solicitud; si la columna no existe, reintentar sin ella
+  const { data, error } = await supabaseServer
+    .from('afiliaciones')
+    .select('id, nombre, apellidos, email, cuota_importe_centimos, numero_solicitud')
+    .eq('stripe_checkout_session_id', sessionId)
+    .single();
+
+  if (data) {
+    afiliacion = data;
+  } else if (error) {
+    // Posiblemente la columna numero_solicitud no existe aún — reintentar sin ella
+    const { data: fallback } = await supabaseServer
+      .from('afiliaciones')
+      .select('id, nombre, apellidos, email, cuota_importe_centimos')
+      .eq('stripe_checkout_session_id', sessionId)
+      .single();
+    if (fallback) {
+      afiliacion = { ...fallback, numero_solicitud: null };
+    }
+  }
+}
+---
+<BaseLayout title="Afiliación completada" description="Tu afiliación se ha completado correctamente." noindex>
+  <section class="section" style="min-height:60vh; display:flex; align-items:center">
+    <div class="container" style="max-width:680px; text-align:center">
+      {afiliacion ? (
+        <div class="card success-card">
+          <div class="success-icon">✅</div>
+          <h1 class="h2" style="margin-top:12px">¡Bienvenido/a, {afiliacion.nombre}!</h1>
+          <p class="lead" style="margin-top:8px">
+            Tu afiliación al Partido República de las Islas Feroe se ha completado correctamente.
+          </p>
+
+          <div class="afnum-box">
+            <span class="afnum-label">Tu número de solicitud de afiliación</span>
+            <span class="afnum-value">{afiliacion.numero_solicitud ?? afiliacion.id}</span>
+          </div>
+
+          
+          <div style="margin-top:24px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
+            <a class="btn primary" href="/">Volver al inicio</a>
+            <a class="btn" href="/participa">Ver participación</a>
+          </div>
+        </div>
+      ) : (
+        <div class="card">
+          <h1 class="h2">Sesión no encontrada</h1>
+          <p class="muted">No se ha podido recuperar la información de tu afiliación. Es posible que el pago aún se esté procesando.</p>
+          <p class="muted">Si ya has completado el pago, recibirás un correo de confirmación en breve.</p>
+          <a class="btn primary" href="/" style="margin-top:18px">Volver al inicio</a>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .success-card {
+    padding: 36px 32px;
+  }
+  .success-icon {
+    font-size: 52px;
+    line-height: 1;
+  }
+  .afnum-box {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 20px;
+    padding: 18px 32px;
+    border-radius: 14px;
+    background: rgba(44, 189, 191, 0.08);
+    border: 2px solid rgba(44, 189, 191, 0.3);
+  }
+  .afnum-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-500);
+  }
+  .afnum-value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary-700);
+    letter-spacing: 0.02em;
+    word-break: break-all;
+  }
+</style>

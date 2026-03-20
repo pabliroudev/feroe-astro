@@ -2,54 +2,234 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 ---
-<BaseLayout title="Transparencia" description="Financiación, estatutos, organigrama y memorias.">
+<BaseLayout title="Transparencia" description="Financiación, estatutos, organigrama y memorias del Partido Republicano Feroés.">
   <PageHeader
     title="Transparencia"
-    description="Estructura para publicar financiación, estatutos, organigrama y memorias. (Contenido de ejemplo.)"
+    description="Compromiso total con la apertura informativa y la responsabilidad ante nuestros miembros y la comunidad."
   />
 
-  <section class="section">
+  <!-- Introducción -->
+  <section class="section compact">
     <div class="container">
+      <div class="card" style="max-width:82ch">
+        <p style="margin:0; line-height:1.7; font-size:1.02rem; color:var(--ink-700)">
+          El Partido Republicano Feroés asume un compromiso total con la apertura informativa y la responsabilidad ante sus miembros y la comunidad académica. En línea con los valores democráticos del partido, toda la actividad interna y parlamentaria se documenta y difunde de forma clara y accesible. Cada mes se publica un boletín oficial que incluye informes de gestión y económicos, y se invita a los afiliados a participar en sesiones informativas abiertas. Además, mantenemos un portal digital donde se suben actas de reuniones, pactos de coalición simulados y cualquier modificación interna relevante.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Información que se mantiene -->
+  <section class="section compact">
+    <div class="container">
+      <h2 class="h2">Información pública</h2>
+      <p class="lead" style="margin-bottom:18px">Se mantiene información actualizada acerca de:</p>
       <div class="grid cols-2">
-        <div class="card">
-          <h2 class="h2">Financiación</h2>
-          <p class="muted" style="margin-top:0">Ingresos, gastos, donaciones y auditorías (si aplica).</p>
-          <ul class="muted" style="margin:0; padding-left: 18px">
-            <li>Resumen anual (PDF)</li>
-            <li>Detalle de partidas</li>
-            <li>Política de donaciones</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2 class="h2">Estatutos y normas</h2>
-          <p class="muted" style="margin-top:0">Documentos fundacionales y reglamentos internos.</p>
-          <ul class="muted" style="margin:0; padding-left: 18px">
-            <li>Estatutos</li>
-            <li>Código ético</li>
-            <li>Protección de datos</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2 class="h2">Organigrama</h2>
-          <p class="muted" style="margin-top:0">Estructura organizativa, portavocías y responsables.</p>
-          <div class="card" style="box-shadow:none">
-            <div class="pill">Demo</div>
-            <p class="muted" style="margin:10px 0 0">Consejo · Coordinación · Áreas · Territorio</p>
+        <div class="card trans-item">
+          <span class="trans-icon">📊</span>
+          <div>
+            <h3 class="trans-title">Informes financieros periódicos</h3>
+            <p class="trans-desc">Publicación trimestral con detalle de ingresos y gastos del grupo parlamentario.</p>
           </div>
         </div>
+        <div class="card trans-item">
+          <span class="trans-icon">📋</span>
+          <div>
+            <h3 class="trans-title">Actas de reuniones</h3>
+            <p class="trans-desc">Resúmenes públicos de cada asamblea de miembros y reuniones internas del grupo.</p>
+          </div>
+        </div>
+        <div class="card trans-item">
+          <span class="trans-icon">📈</span>
+          <div>
+            <h3 class="trans-title">Estadísticas de participación</h3>
+            <p class="trans-desc">Datos actualizados de asistencia y votaciones en las sesiones del parlamento.</p>
+          </div>
+        </div>
+        <div class="card trans-item">
+          <span class="trans-icon">🗃️</span>
+          <div>
+            <h3 class="trans-title">Portal de datos abiertos</h3>
+            <p class="trans-desc">Bases de datos con información de contacto, distribución presupuestaria y calendario legislativo interno.</p>
+          </div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:14px; font-size:0.92rem">
+        Todos estos documentos están disponibles para descarga en PDF en la sección de Memorias, garantizando que cualquier interesado pueda verificar nuestra gestión.
+      </p>
+    </div>
+  </section>
 
+  <!-- Financiación -->
+  <section class="section compact">
+    <div class="container">
+      <h2 class="h2">Financiación</h2>
+      <p class="lead" style="margin-bottom:18px">
+        La financiación del partido se sustenta en fuentes transparentes y éticas. Nuestra política económica prohíbe donaciones anónimas o condicionadas; rechazamos cualquier aportación que pudiera comprometer nuestra independencia ideológica. Los recursos se destinan exclusivamente a las actividades del partido y al fortalecimiento de la formación política de nuestros miembros.
+      </p>
+      <div class="grid cols-2">
         <div class="card">
-          <h2 class="h2">Memorias</h2>
-          <p class="muted" style="margin-top:0">Actividades, métricas y evaluación.</p>
-          <ul class="muted" style="margin:0; padding-left: 18px">
-            <li>Memoria 2026 (borrador)</li>
-            <li>Indicadores y cumplimiento</li>
-            <li>Actas y resoluciones</li>
-          </ul>
+          <h3 style="margin:0 0 8px">💰 Fuentes de ingresos</h3>
+          <p class="muted" style="margin:0">Cuotas anuales de afiliados, microdonaciones de simpatizantes y fondos obtenidos en eventos académicos (cafés-debate, conferencias).</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 8px">📦 Gastos principales</h3>
+          <p class="muted" style="margin:0">Materiales informativos (folletos, pancartas, plataforma web), equipo técnico para debates, organización de talleres formativos y viajes de representación en congresos.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 8px">📒 Presupuesto anual</h3>
+          <p class="muted" style="margin:0">Aproximadamente <strong>80.000 DKK</strong> para el ciclo 2026–2027. Este balance, junto con su desglose por partidas, está recogido en nuestro Resumen Anual disponible para descarga.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 8px">🔍 Control interno</h3>
+          <p class="muted" style="margin:0">Un comité de auditoría revisa periódicamente las cuentas y emite recomendaciones, reflejándose sus informes en la web para su revisión pública.</p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:14px; font-size:0.92rem">
+        Estas medidas aseguran que los fondos se utilizan de manera responsable en beneficio del proyecto formativo y político del partido.
+      </p>
+
+      <div class="download-box">
+        <span class="download-icon">📄</span>
+        <div>
+          <h3 style="margin:0 0 4px; font-size:1.05rem">Presupuestos anuales</h3>
+          <p class="muted" style="margin:0 0 10px; font-size:0.9rem">Consulta el desglose completo del presupuesto del partido para el ciclo 2026–2027.</p>
+          <a class="btn primary" href="../../public/Presupuestos anuales Republica.pdf" download style="font-size:0.9rem; padding:8px 20px">
+            ⬇ Descargar PDF
+          </a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Estatutos y normas -->
+  <section class="section compact">
+    <div class="container">
+      <h2 class="h2">Estatutos y normas</h2>
+      <p class="lead" style="margin-bottom:18px">
+        Los estatutos del Partido Republicano Feroés están inspirados en las tradiciones democráticas de las Islas Feroe y en los ideales modernos de autodeterminación y justicia social. En ellos se definen la misión del partido, la organización interna y los derechos y deberes de los afiliados. El código ético, parte integral de nuestros reglamentos, subraya la conducta esperada de todos sus miembros.
+      </p>
+
+      <div class="grid cols-3">
+        <div class="card">
+          <h3 style="margin:0 0 8px">📜 Declaración de principios</h3>
+          <p class="muted" style="margin:0">Promover la soberanía feroesa, impulsar el bienestar social, proteger el idioma y la cultura local, y defender una economía sostenible.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 8px">✅ Derechos de los afiliados</h3>
+          <p class="muted" style="margin:0">Participar en asambleas generales, votar en la elección de autoridades internas, proponer iniciativas y revisiones al programa del partido.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 8px">📌 Deberes de los afiliados</h3>
+          <p class="muted" style="margin:0">Cumplir con los estatutos, respetar las decisiones democráticas internas, contribuir al desarrollo de campañas y formación política, y mantener la integridad en todas las actividades.</p>
+        </div>
+      </div>
+
+      <div class="section compact"></div>
+
+      <!-- Código Ético completo -->
+      <div class="card etico-card">
+        <h3 style="margin:0 0 6px; font-size:1.2rem">⚖️ Código Ético</h3>
+        <p class="muted" style="margin:0 0 18px; line-height:1.7">
+          Este código ético tiene como objetivo establecer los principios de integridad, respeto y responsabilidad que guían la actuación de todos los afiliados del Partido Republicano Feroés.
+        </p>
+
+        <h4 class="etico-subtitle">Principios Éticos Fundamentales</h4>
+        <ol class="etico-list">
+          <li><strong>Integridad:</strong> Actuar con honestidad en todas las deliberaciones y evitar la difusión de información falsa.</li>
+          <li><strong>Respeto y tolerancia:</strong> Escuchar con cortesía a los demás diputados, respetando las opiniones contrarias.</li>
+          <li><strong>Compromiso con la democracia:</strong> Defender el proceso democrático interno y la toma de decisiones transparente.</li>
+          <li><strong>Responsabilidad:</strong> Cumplir puntualmente con las tareas asignadas y hacer un uso adecuado de los recursos del partido.</li>
+          <li><strong>Confidencialidad:</strong> Proteger la información interna y no divulgar datos personales o estrategias sin permiso.</li>
+          <li><strong>No discriminación:</strong> Rechazar cualquier forma de discriminación por género, orientación, etnia, religión u opinión política.</li>
+        </ol>
+
+        <h4 class="etico-subtitle">Compromisos del Afiliado</h4>
+        <ol class="etico-list">
+          <li>Cumplir las decisiones de los órganos del partido, asistir a las reuniones obligatorias y contribuir activamente a los objetivos colectivos.</li>
+          <li>Evitar el beneficio personal en las actividades del partido y notificar cualquier conflicto de interés.</li>
+          <li>Respetar las normas académicas y éticas propias de la universidad durante eventos y debates.</li>
+        </ol>
+
+        <h4 class="etico-subtitle">Mecanismos de Supervisión</h4>
+        <p class="muted" style="margin:0 0 12px; line-height:1.7">
+          La Comisión de Ética (interna del partido) recibe denuncias y verifica conductas. Todas las quejas se revisan en asamblea interna, garantizando derecho de defensa al implicado.
+        </p>
+
+        <h4 class="etico-subtitle">Sanciones por Incumplimiento</h4>
+        <ol class="etico-list">
+          <li>Amonestación pública dentro del partido, suspensión temporal de cargos internos o expulsión, según la gravedad.</li>
+          <li>Las sanciones se aplicarán siguiendo el procedimiento establecido en el reglamento interno.</li>
+        </ol>
+      </div>
+
+      <div style="margin-top:18px" class="card">
+        <h3 style="margin:0 0 10px">🔒 Protección de datos</h3>
+        <p class="muted" style="margin:0; line-height:1.7">
+          Solo recopilamos datos personales necesarios de nuestros afiliados para gestión interna. Utilizamos plataformas seguras y respetamos los principios del RGPD para tratar la información. Los datos no se comparten con terceros externos y solo se emplean con fines de comunicación política y organización interna. Los afiliados pueden acceder y rectificar sus datos en cualquier momento.
+        </p>
+      </div>
+
+      <p class="muted" style="margin-top:14px; font-size:0.92rem">
+        Los estatutos completos, el reglamento interno y el código ético están disponibles en línea para quien desee consultarlos, asegurando transparencia en nuestras reglas fundacionales.
+      </p>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .trans-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .trans-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .download-box {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-top: 22px;
+    padding: 22px 28px;
+    border-radius: var(--radius);
+    background: rgba(44, 189, 191, 0.06);
+    border: 2px solid rgba(44, 189, 191, 0.25);
+  }
+  .download-icon {
+    font-size: 38px;
+    flex-shrink: 0;
+  }
+  .trans-title {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .trans-desc {
+    margin: 0;
+    color: var(--ink-500);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+  .etico-card {
+    padding: 28px 32px;
+  }
+  .etico-subtitle {
+    margin: 20px 0 8px;
+    font-size: 1.02rem;
+    color: var(--primary-700);
+    letter-spacing: -0.01em;
+  }
+  .etico-list {
+    margin: 0 0 12px;
+    padding-left: 22px;
+    color: var(--ink-600);
+    line-height: 1.75;
+    font-size: 0.95rem;
+  }
+  .etico-list li {
+    margin-bottom: 6px;
+  }
+</style>

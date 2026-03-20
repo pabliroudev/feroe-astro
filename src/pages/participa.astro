@@ -5,10 +5,11 @@ import PageHeader from '../components/PageHeader.astro';
 <BaseLayout title="Participa" description="Afiliación, voluntariado y contacto con FEROE.">
   <PageHeader
     title="Participa"
-    description="Afiliación, voluntariado y contacto. Formularios preparados (pendiente de conectar backend o servicio)."
+    description="Únete al Partido República de las Islas Feroe: afíliate, colabora como voluntario o ponte en contacto."
   />
 
-  <section class="section">
+  <!-- ====== Tarjetas rápidas ====== -->
+  <section class="section compact">
     <div class="container">
       <div class="grid cols-3">
         <div class="card">
@@ -35,48 +36,250 @@ import PageHeader from '../components/PageHeader.astro';
           <a class="btn ghost" href="/contacto">Ir a contacto</a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="section"></div>
+  <!-- ====== Afiliación ====== -->
+  <section class="section compact">
+    <div class="container">
+      <h2 class="h2">¿Qué conlleva la afiliación?</h2>
+      <p class="lead" style="margin-bottom:20px">
+        Afiliarse al Partido República de las Islas Feroe es un compromiso con los valores del partido. La afiliación será siempre voluntaria y los afiliados podrán darse de baja en el momento que estimen oportuno, sin ningún problema.
+      </p>
 
+      <div class="grid cols-3">
+        <!-- 1. Adhesión ideológica -->
+        <div class="card participa-card">
+          <span class="participa-num">1</span>
+          <h3 class="participa-title">Adhesión ideológica</h3>
+          <p class="participa-desc">
+            Deberán apoyar las aspiraciones ideológicas del partido, así como la independencia de las Islas Feroe que este defiende. Es decir, deberá defender la independencia de las Islas, así como las líneas del programa, principalmente basadas en la sostenibilidad, el bienestar social y el control nacional de los recursos.
+          </p>
+        </div>
+
+        <!-- 2. Participación interna -->
+        <div class="card participa-card">
+          <span class="participa-num">2</span>
+          <h3 class="participa-title">Participación interna</h3>
+          <p class="participa-desc">
+            Quien se encuentre afiliado gozará de ciertos derechos como el de voto en asambleas internas, participación en reuniones a nivel tanto local como nacional, posibilidad de influir en el programa del partido y la opción de presentarse como candidato en las elecciones locales o al Løgting, siempre y cuando se cumplan ciertos requisitos.
+          </p>
+          <ul class="participa-list">
+            <li>Derecho a votar en asambleas internas</li>
+            <li>Participación en reuniones nacionales y locales</li>
+            <li>Influencia en el programa del partido</li>
+            <li>Posibilidad de postularse como candidato</li>
+          </ul>
+        </div>
+
+        <!-- 3. Cuota y compromiso -->
+        <div class="card participa-card">
+          <span class="participa-num">3</span>
+          <h3 class="participa-title">Cuota y compromiso</h3>
+          <p class="participa-desc">
+            El compromiso conlleva la participación en eventos, manifestaciones y reuniones de manera activa. La cuota representará una cuantía simbólica que servirá para mejorar los servicios prestados por y para el partido.
+          </p>
+          <div class="cuota-badge">
+            <span class="cuota-valor">15 – 50 €</span>
+            <span class="cuota-equiv">≈ 110 – 170 DKK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Voluntariado ====== -->
+  <section class="section compact">
+    <div class="container">
+      <h2 class="h2">Voluntariado</h2>
+
+      <div class="grid cols-2">
+        <!-- Implica -->
+        <div class="card">
+          <h3 style="margin:0 0 14px; color:var(--primary-700)">✅ Implica</h3>
+          <div class="vol-item">
+            <span class="vol-num">1</span>
+            <div>
+              <strong>Apoyo en campaña</strong>
+              <p class="muted" style="margin:4px 0 0">Repartir folletos informativos, ayuda con la organización de eventos y actos públicos, movilización de votantes…</p>
+            </div>
+          </div>
+          <div class="vol-item">
+            <span class="vol-num">2</span>
+            <div>
+              <strong>Trabajo organizativo</strong>
+              <p class="muted" style="margin:4px 0 0">Apoyo en reuniones, preparar contenidos y materiales, labores administrativas…</p>
+            </div>
+          </div>
+          <div class="vol-item">
+            <span class="vol-num">3</span>
+            <div>
+              <strong>Compromiso ideológico</strong>
+              <p class="muted" style="margin:4px 0 0">No contradecir los principios defendidos por el partido.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- No implica -->
+        <div class="card">
+          <h3 style="margin:0 0 14px; color:var(--ink-500)">❌ No implica (necesariamente)</h3>
+          <ul class="no-implica-list">
+            <li>Pago de una cuota — solo para afiliados</li>
+            <li>Derecho de voto en decisiones internas</li>
+            <li>No conlleva salario ni relación laboral</li>
+            <li>Se puede cesar en cualquier momento</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Formulario de afiliación ====== -->
+  <section class="section">
+    <div class="container">
       <div class="card" id="form">
-        <h2 class="h2">Formulario (demo)</h2>
-        <p class="muted" style="margin-top: 0">
-          Este formulario no envía nada todavía. Si lo desplegáis en Netlify, se puede activar con “Netlify Forms”,
-          o conectar a un endpoint propio.
+        <h2 class="h2">Formulario de afiliación</h2>
+        <p class="muted" style="margin-top:0; margin-bottom:18px">
+          Rellena todos los campos obligatorios (<span style="color:#e5576c">*</span>) para tramitar tu alta como afiliado/a.
         </p>
 
-        <form class="grid cols-2" method="post">
-          <div>
-            <label for="name">Nombre</label>
-            <input id="name" name="name" autocomplete="name" placeholder="Tu nombre" />
-          </div>
+        <!-- Mensajes de estado -->
+        <div id="formSuccess" class="form-msg form-msg--ok" hidden>
+          ✅ Tu solicitud de afiliación se ha enviado correctamente. Nos pondremos en contacto contigo.
+        </div>
+        <div id="formError" class="form-msg form-msg--err" hidden></div>
 
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" />
-          </div>
+        <form id="afiliacionForm" novalidate>
+          <!-- ===== 1. Datos personales ===== -->
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">1. Datos personales</legend>
+            <div class="grid cols-2 form-grid">
+              <div>
+                <label for="af_nombre">Nombre <span class="req">*</span></label>
+                <input id="af_nombre" name="nombre" autocomplete="given-name" required minlength="2" maxlength="120" placeholder="Ej: Klara" />
+              </div>
+              <div>
+                <label for="af_apellidos">Apellidos <span class="req">*</span></label>
+                <input id="af_apellidos" name="apellidos" autocomplete="family-name" required minlength="2" maxlength="200" placeholder="Ej: Sørensen" />
+              </div>
+              <div>
+                <label for="af_dni">DNI / NIE <span class="req">*</span></label>
+                <input id="af_dni" name="dni_nie" required maxlength="9" placeholder="12345678A o X1234567A" style="text-transform:uppercase" />
+              </div>
+              <div>
+                <label for="af_nacimiento">Fecha de nacimiento <span class="req">*</span></label>
+                <input id="af_nacimiento" name="fecha_nacimiento" type="date" required />
+              </div>
+            </div>
+          </fieldset>
 
-          <div>
-            <label for="role">Quiero</label>
-            <select id="role" name="role">
-              <option>Afiliarme</option>
-              <option>Ser voluntario/a</option>
-              <option>Recibir información</option>
-            </select>
-          </div>
+          <!-- ===== 2. Contacto ===== -->
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">2. Contacto</legend>
+            <div class="grid cols-2 form-grid">
+              <div style="grid-column:1/-1">
+                <label for="af_direccion">Dirección <span class="req">*</span></label>
+                <input id="af_direccion" name="direccion" autocomplete="street-address" required minlength="3" placeholder="Calle, número, piso…" />
+              </div>
+              <div>
+                <label for="af_ciudad">Ciudad <span class="req">*</span></label>
+                <input id="af_ciudad" name="ciudad" autocomplete="address-level2" required minlength="2" placeholder="Ej: Tórshavn" />
+              </div>
+              <div>
+                <label for="af_provincia">Provincia / Región <span class="req">*</span></label>
+                <input id="af_provincia" name="provincia" autocomplete="address-level1" required minlength="2" placeholder="Ej: Streymoy" />
+              </div>
+              <div>
+                <label for="af_cp">Código postal <span class="req">*</span></label>
+                <input id="af_cp" name="codigo_postal" autocomplete="postal-code" required minlength="4" maxlength="10" placeholder="Ej: 100" />
+              </div>
+              <div>
+                <label for="af_telefono">Teléfono <span class="req">*</span></label>
+                <input id="af_telefono" name="telefono" type="tel" autocomplete="tel" required minlength="6" maxlength="20" placeholder="+298 123 456" />
+              </div>
+              <div style="grid-column:1/-1">
+                <label for="af_email">Email <span class="req">*</span></label>
+                <input id="af_email" name="email" type="email" autocomplete="email" required placeholder="tu@email.com" />
+              </div>
+            </div>
+          </fieldset>
 
-          <div>
-            <label for="where">Territorio</label>
-            <input id="where" name="where" placeholder="Ciudad / distrito / región" />
-          </div>
+          <!-- ===== 3. Datos estadísticos (opcionales) ===== -->
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">3. Datos estadísticos <span class="muted" style="font-weight:400; font-size:0.85rem">(opcionales)</span></legend>
+            <div class="grid cols-3 form-grid">
+              <div>
+                <label for="af_estudios">Nivel de estudios</label>
+                <select id="af_estudios" name="nivel_estudios">
+                  <option value="">— Seleccionar —</option>
+                  <option>Sin estudios</option>
+                  <option>Educación secundaria</option>
+                  <option>Formación profesional</option>
+                  <option>Grado universitario</option>
+                  <option>Máster / Postgrado</option>
+                  <option>Doctorado</option>
+                </select>
+              </div>
+              <div>
+                <label for="af_ocupacion">Ocupación</label>
+                <input id="af_ocupacion" name="ocupacion" placeholder="Ej: Ingeniero/a, estudiante…" />
+              </div>
+              <div>
+                <label for="af_genero">Género</label>
+                <select id="af_genero" name="genero">
+                  <option value="">— Seleccionar —</option>
+                  <option>Hombre</option>
+                  <option>Mujer</option>
+                  <option>No binario</option>
+                  <option>Prefiero no decirlo</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
 
-          <div style="grid-column: 1 / -1">
-            <label for="msg">Mensaje</label>
-            <textarea id="msg" name="msg" placeholder="Cuéntanos en qué te gustaría participar..."></textarea>
-          </div>
+          <!-- ===== 4. Cuota mensual ===== -->
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">4. Cuota mensual</legend>
+            <p class="muted" style="margin:0 0 10px; font-size:0.92rem">
+              Elige tu cuota mensual (entre 15 € y 50 €). La cuantía es simbólica y sirve para mejorar los servicios del partido.
+            </p>
+            <div class="cuota-selector">
+              <label class="cuota-option">
+                <input type="radio" name="cuota" value="1500" checked /> <span>15 €</span>
+              </label>
+              <label class="cuota-option">
+                <input type="radio" name="cuota" value="2500" /> <span>25 €</span>
+              </label>
+              <label class="cuota-option">
+                <input type="radio" name="cuota" value="3500" /> <span>35 €</span>
+              </label>
+              <label class="cuota-option">
+                <input type="radio" name="cuota" value="5000" /> <span>50 €</span>
+              </label>
+              <label class="cuota-option cuota-custom">
+                <input type="radio" name="cuota" value="custom" /> <span>Otra:</span>
+                <input type="number" id="af_cuota_custom" min="15" max="500" placeholder="€" disabled style="width:80px" />
+              </label>
+            </div>
+          </fieldset>
 
-          <div style="grid-column: 1 / -1; display:flex; gap:12px; flex-wrap:wrap">
-            <button class="btn primary" type="submit">Enviar</button>
+          <!-- ===== 5. Consentimientos ===== -->
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">5. Consentimientos</legend>
+            <div class="consent-group">
+              <label class="consent-label">
+                <input type="checkbox" name="acepta_politica_privacidad" required />
+                <span>Acepto la <strong>política de privacidad</strong> y el tratamiento de mis datos personales. <span class="req">*</span></span>
+              </label>
+              <label class="consent-label">
+                <input type="checkbox" name="acepta_comunicaciones" />
+                <span>Acepto recibir comunicaciones del partido por email.</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px">
+            <button class="btn primary" type="submit" id="afSubmitBtn">Enviar solicitud de afiliación</button>
             <a class="btn" href="/transparencia">Ver transparencia</a>
           </div>
         </form>
@@ -84,3 +287,277 @@ import PageHeader from '../components/PageHeader.astro';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Afiliación cards */
+  .participa-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .participa-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-700), var(--primary-500));
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .participa-title {
+    margin: 4px 0 0;
+    font-size: 1.08rem;
+    letter-spacing: -0.01em;
+  }
+  .participa-desc {
+    margin: 0;
+    color: var(--ink-700);
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+  .participa-list {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    color: var(--ink-500);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* Cuota badge */
+  .cuota-badge {
+    margin-top: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: rgba(44, 189, 191, 0.10);
+    border: 1px solid rgba(44, 189, 191, 0.25);
+  }
+  .cuota-valor {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary-700);
+    letter-spacing: -0.02em;
+  }
+  .cuota-equiv {
+    font-size: 0.82rem;
+    color: var(--ink-500);
+    font-weight: 600;
+  }
+
+  /* Voluntariado items */
+  .vol-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .vol-item:last-child {
+    border-bottom: none;
+  }
+  .vol-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    color: var(--primary-700);
+    font-weight: 800;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .no-implica-list {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--ink-700);
+    font-size: 0.95rem;
+    line-height: 2;
+  }
+
+  /* ====== Formulario afiliación ====== */
+  .form-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .form-legend {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink-900);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(44, 189, 191, 0.25);
+    width: 100%;
+  }
+  .form-grid {
+    gap: 14px !important;
+  }
+  .req { color: #e5576c; }
+
+  /* Cuota radio selector */
+  .cuota-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cuota-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: border-color .15s, background .15s;
+  }
+  .cuota-option:has(input:checked) {
+    border-color: var(--primary-500);
+    background: rgba(44, 189, 191, 0.08);
+  }
+  .cuota-option input[type="radio"] {
+    width: auto;
+    accent-color: var(--primary-700);
+  }
+  .cuota-custom input[type="number"] {
+    padding: 6px 8px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  /* Consentimientos */
+  .consent-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 400;
+    font-size: 0.94rem;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+  .consent-label input[type="checkbox"] {
+    width: auto;
+    margin-top: 3px;
+    accent-color: var(--primary-700);
+  }
+
+  /* Mensajes de estado */
+  .form-msg {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .form-msg--ok {
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #065f46;
+  }
+  .form-msg--err {
+    background: rgba(229, 87, 108, 0.10);
+    border: 1px solid rgba(229, 87, 108, 0.3);
+    color: #9b1c31;
+  }
+</style>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('afiliacionForm');
+  const successEl = document.getElementById('formSuccess');
+  const errorEl = document.getElementById('formError');
+  const submitBtn = document.getElementById('afSubmitBtn');
+  const customInput = document.getElementById('af_cuota_custom');
+
+  // Toggle custom cuota input
+  form.querySelectorAll('input[name="cuota"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      customInput.disabled = radio.value !== 'custom';
+      if (radio.value === 'custom') customInput.focus();
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    successEl.hidden = true;
+    errorEl.hidden = true;
+
+    // Gather cuota
+    const cuotaRadio = form.querySelector('input[name="cuota"]:checked');
+    let cuotaCentimos = parseInt(cuotaRadio.value, 10);
+    if (cuotaRadio.value === 'custom') {
+      cuotaCentimos = Math.round(parseFloat(customInput.value || '0') * 100);
+      if (cuotaCentimos < 1500 || cuotaCentimos > 50000) {
+        errorEl.textContent = 'La cuota personalizada debe estar entre 15 € y 500 €.';
+        errorEl.hidden = false;
+        return;
+      }
+    }
+
+    const payload = {
+      nombre: form.nombre.value,
+      apellidos: form.apellidos.value,
+      dni_nie: form.dni_nie.value,
+      fecha_nacimiento: form.fecha_nacimiento.value,
+      direccion: form.direccion.value,
+      ciudad: form.ciudad.value,
+      provincia: form.provincia.value,
+      codigo_postal: form.codigo_postal.value,
+      email: form.email.value,
+      telefono: form.telefono.value,
+      nivel_estudios: form.nivel_estudios.value,
+      ocupacion: form.ocupacion.value,
+      genero: form.genero.value,
+      acepta_politica_privacidad: form.acepta_politica_privacidad.checked,
+      acepta_comunicaciones: form.acepta_comunicaciones.checked,
+      cuota_importe_centimos: cuotaCentimos,
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+
+    try {
+      const res = await fetch('/api/afiliacion', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (data.ok && data.checkout_url) {
+        // Redirect to Stripe Checkout
+        submitBtn.textContent = 'Redirigiendo al pago…';
+        window.location.href = data.checkout_url;
+        return;
+      } else {
+        errorEl.innerHTML = (data.errors || ['Error desconocido']).map(e => e).join('<br>');
+        errorEl.hidden = false;
+      }
+    } catch {
+      errorEl.textContent = 'Error de conexión. Inténtalo de nuevo.';
+      errorEl.hidden = false;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar solicitud de afiliación';
+    }
+  });
+});
+</script>
