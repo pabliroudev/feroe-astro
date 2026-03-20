@@ -1,56 +1,61 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
 
 const candidatos = [
   {
     nombre: "Klara Sørensen",
     cargo: "Líder del partido",
     foto: "klara.jpeg",
-    descripcion: "Klara Sørensen es una política feroesa nacida en Tórshvan el 15 de octubre de 1986. De madre diplomática y padre ingeniero de telecomunicaciones, Sørensen mostró interés por la política desde joven, participando en la vida cultural y política del archipiélago. Cursó el doble grado de Ciencia Política y Relaciones Internacionales en la Universidad de Cambridge; ha realizado dos másters, uno en Procesos de Autodeterminación y Sistemas Políticos Nórdicos en la Universidad de las Islas Feroe y otro en Sistemas Electorales y Prevención contra la Corrupción en la Universidad Autónoma de Barcelona. Durante su etapa universitaria participó en movimientos juveniles vinculados a la izquierda y al independientismo democrático. Habla de manera fluida el danés, feroés, español, catalán, inglés, francés y árabe. Se incorporó al partido de la República en su juventud, destacando por su capacidad de oratoria y enfoque progresista. Fue elegida diputada en el Løgting, centrando su labor en políticas sociales, igualdad de género y sostenibilidad ambiental. Años más tarde, en 2019, asumió el liderazgo del partido.",
+    descripcion:
+      "Klara Sørensen es una política feroesa nacida en Tórshvan el 15 de octubre de 1986. De madre diplomática y padre ingeniero de telecomunicaciones, Sørensen mostró interés por la política desde joven, participando en la vida cultural y política del archipiélago. Cursó el doble grado de Ciencia Política y Relaciones Internacionales en la Universidad de Cambridge; ha realizado dos másters, uno en Procesos de Autodeterminación y Sistemas Políticos Nórdicos en la Universidad de las Islas Feroe y otro en Sistemas Electorales y Prevención contra la Corrupción en la Universidad Autónoma de Barcelona. Durante su etapa universitaria participó en movimientos juveniles vinculados a la izquierda y al independientismo democrático. Habla de manera fluida el danés, feroés, español, catalán, inglés, francés y árabe. Se incorporó al partido de la República en su juventud, destacando por su capacidad de oratoria y enfoque progresista. Fue elegida diputada en el Løgting, centrando su labor en políticas sociales, igualdad de género y sostenibilidad ambiental. Años más tarde, en 2019, asumió el liderazgo del partido.",
     destacado: true,
   },
   {
     nombre: "Andrias Poulsen",
     cargo: "Director de Comunicación",
     foto: "andrias.jpeg",
-    descripcion: "Poulsen nació en Tórshavn el 19 de abril de 1990. Estudió Ciencias Políticas y Comunicación en Fróðskaparsetur Føroya (Universidad de las Islas Feroe), donde se interesó especialmente por la Comunicación Política, participando en revistas estudiantiles y en Unga Tjóðveldið (la juventud del partido República). Cursó parte de la carrera en la Universidad de Bergen (Noruega) gracias a un programa de intercambios, donde perfeccionó el uso de idiomas como el noruego o el inglés y el conocimiento de estudios nórdicos y de política comparada. Su formación culminaría con un Máster en Relaciones Internacionales en la Universidad de Oslo, que le proporcionó conocimientos en Diplomacia y Derecho Internacional. Actualmente es el Director de Comunicación del Partido República de las Islas Feroe. Utiliza su formación en Ciencia Política, Diplomacia e idiomas (inglés, feroés, danés y noruego) para ocupar un puesto clave en el partido, no como un “político clásico” sino como ideólogo y comunicador.",
+    descripcion:
+      "Poulsen nació en Tórshavn el 19 de abril de 1990. Estudió Ciencias Políticas y Comunicación en Fróðskaparsetur Føroya (Universidad de las Islas Feroe), donde se interesó especialmente por la Comunicación Política, participando en revistas estudiantiles y en Unga Tjóðveldið (la juventud del partido República). Cursó parte de la carrera en la Universidad de Bergen (Noruega) gracias a un programa de intercambios, donde perfeccionó el uso de idiomas como el noruego o el inglés y el conocimiento de estudios nórdicos y de política comparada. Su formación culminaría con un Máster en Relaciones Internacionales en la Universidad de Oslo, que le proporcionó conocimientos en Diplomacia y Derecho Internacional. Actualmente es el Director de Comunicación del Partido República de las Islas Feroe. Utiliza su formación en Ciencia Política, Diplomacia e idiomas (inglés, feroés, danés y noruego) para ocupar un puesto clave en el partido, no como un “político clásico” sino como ideólogo y comunicador.",
   },
   {
     nombre: "Elin Joensen",
     cargo: "Jefa de campaña",
     foto: "elin.jpeg",
-    descripcion: "Elin Joensen nació el 14 de marzo de 1988 en Tórshavn, Islas Feroe. Estudió Ciencias Políticas y Administración Pública en la Universidad de las Islas Feroe, donde se especializó en sistemas de gobierno nórdicos y participación ciudadana. Completó su formación con un máster en Comunicación Política y Estrategia Electoral en la Universidad de Copenhague. Inició su trayectoria profesional como asesora parlamentaria y analista de políticas públicas, trabajando en campañas locales y en el diseño de estrategias de movilización juvenil. Actualmente es la jefa de campaña del partido República de Feroe."
+    descripcion:
+      "Elin Joensen nació el 14 de marzo de 1988 en Tórshavn, Islas Feroe. Estudió Ciencias Políticas y Administración Pública en la Universidad de las Islas Feroe, donde se especializó en sistemas de gobierno nórdicos y participación ciudadana. Completó su formación con un máster en Comunicación Política y Estrategia Electoral en la Universidad de Copenhague. Inició su trayectoria profesional como asesora parlamentaria y analista de políticas públicas, trabajando en campañas locales y en el diseño de estrategias de movilización juvenil. Actualmente es la jefa de campaña del partido República de Feroe.",
   },
   {
     nombre: "Friederik Nielsen",
     cargo: "Community Manager",
     foto: "friederik.jpeg",
-    descripcion: "Friederik Nielsen nació el 22 de septiembre de 1985 en Klaksvík, Islas Feroe. Cursó estudios en Ciencias Políticas y Filosofía en la Universidad de las Islas Feroe, donde centró su investigación en los modelos de democracia participativa y las tradiciones asamblearias nórdicas. Posteriormente amplió su formación con un máster en Gobernanza y Análisis Político en la Universidad de Aarhus, Dinamarca. Comenzó su carrera profesional como investigador en el Instituto de Historia Social y Política de Tórshavn, colaborando asiduamente con medios de comunicación como analista político y columnista. Su compromiso con el activismo social lo llevó a implicarse en movimientos vecinales y asambleas ciudadanas, donde desarrolló las bases de su pensamiento político centrado en la soberanía popular. En la actualidad ejerce como Portavoz del grupo político Tjodveld La República, siendo la cara visible y principal portavoz de la formación en el debate público y las instituciones. Para él, las Islas Feroe ocupan un lugar especial y central en su corazón porque fue en sus pequeñas comunidades costeras donde comprendió que la política no es una cuestión de grandes discursos, sino de escuchar el latido de la gente corriente y devolverles la voz que los sistemas alejados de la ciudadanía les han arrebatado."
+    descripcion:
+      "Friederik Nielsen nació el 22 de septiembre de 1985 en Klaksvík, Islas Feroe. Cursó estudios en Ciencias Políticas y Filosofía en la Universidad de las Islas Feroe, donde centró su investigación en los modelos de democracia participativa y las tradiciones asamblearias nórdicas. Posteriormente amplió su formación con un máster en Gobernanza y Análisis Político en la Universidad de Aarhus, Dinamarca. Comenzó su carrera profesional como investigador en el Instituto de Historia Social y Política de Tórshavn, colaborando asiduamente con medios de comunicación como analista político y columnista. Su compromiso con el activismo social lo llevó a implicarse en movimientos vecinales y asambleas ciudadanas, donde desarrolló las bases de su pensamiento político centrado en la soberanía popular.",
   },
   {
     nombre: "Sofia Petersen",
     cargo: "Community Manager",
     foto: "sofia.jpeg",
-    descripcion: "Sofía Petersen es una profesional especializada en comunicación política y estrategia digital, con experiencia en campañas electorales y gestión de imagen pública de partidos emergentes. Nacida el 6 de Diciembre del 1987 y graduada en Comunicación Audiovisual por la Universidad de Aalborg (Dinamarca), amplió su formación con un Máster en Comunicación Política y Gestión de Campañas Electorales en la Universidad de Copenhague. Posteriormente completó un curso de especialización en Estrategia Digital y Análisis de Opinión Pública, centrado en el uso de datos, segmentación electoral y gestión de redes sociales en contextos políticos. Actualmente trabaja como Community Manager del Partido Republicano Feroés, donde se encarga de diseñar la estrategia de comunicación en redes sociales, coordinar campañas digitales, monitorizar la percepción pública del partido y elaborar contenidos dirigidos especialmente al electorado joven. Dentro del partido ha ganado relevancia por su capacidad para responder a crisis comunicativas y adaptar el discurso político a formatos digitales. En el sistema político feroés, Sofía representa el perfil de nueva generación de consultores políticos: profesionales con fuerte base técnica, orientación a los datos y gran dominio del entorno digital. Sus objetivos a medio plazo incluyen asumir la dirección de comunicación del partido y participar directamente en la planificación estratégica de campañas nacionales. Se la considera una figura pragmática, con sensibilidad hacia temas de transparencia institucional, participación ciudadana y modernización de la comunicación política"
+    descripcion:
+      "Sofía Petersen es una profesional especializada en comunicación política y estrategia digital, con experiencia en campañas electorales y gestión de imagen pública de partidos emergentes. Graduada en Comunicación Audiovisual por la Universidad de Aalborg (Dinamarca), amplió su formación con un Máster en Comunicación Política y Gestión de Campañas Electorales en la Universidad de Copenhague. Actualmente trabaja como Community Manager del Partido Republicano Feroés, donde se encarga de diseñar la estrategia de comunicación en redes sociales, coordinar campañas digitales, monitorizar la percepción pública del partido y elaborar contenidos dirigidos especialmente al electorado joven.",
   },
   {
     nombre: "Hannah Olsen",
     cargo: "Community Manager",
     foto: "hannah.jpeg",
-    descripcion: "Directora de redes sociales/ Community Manager del Partido República en las islas Feroes. Nació el 27 de julio de 1998 en Oslo, de familia con raíces feroeses. Su madre estudió Ciencias de la Administración y su padre Derecho, en la Universidad de Estudió un doble grado de Relaciones Públicas-Marketing y Organización de eventos, protocolo y comunicación corporativa en la Universidad de Oslo, en Noruega; para especializarse, posteriormente, cursando un doctorado en Campañas nórdicas y el uso propagandístico de las redes sociales. Habla 6 idiomas de manera fluida entre los que se encuentran el feroés, danés, noruego, español, inglés y alemán.",
+    descripcion:
+      "Directora de redes sociales / Community Manager del Partido República en las Islas Feroe. Nació el 27 de julio de 1998 en Oslo, de familia con raíces feroesas. Estudió un doble grado de Relaciones Públicas-Marketing y Organización de eventos, protocolo y comunicación corporativa en la Universidad de Oslo. Posteriormente cursó un doctorado en Campañas nórdicas y el uso propagandístico de las redes sociales. Habla feroés, danés, noruego, español, inglés y alemán.",
   },
 ];
 
-
 const principal = candidatos.find((c) => c.destacado) ?? candidatos[0];
 const resto = candidatos.filter((c) => c !== principal);
-
 ---
+
 <BaseLayout title="Quiénes somos" description="Historia, valores y equipo de FEROE.">
   <PageHeader
     title="Quiénes somos"
-    description="Sección lista para contar historia, valores, principios y equipo. El texto es provisional para maquetación."
+    description="Sección lista para contar historia, valores, principios y equipo."
   />
 
   <section class="section">
@@ -60,7 +65,6 @@ const resto = candidatos.filter((c) => c !== principal);
           <h2 class="h2">Misión</h2>
           <p class="muted" style="margin:0">
             Construir una organización abierta, con propuesta política clara, mecanismos de participación y rendición de cuentas.
-            (Contenido de ejemplo.)
           </p>
         </div>
 
@@ -80,12 +84,13 @@ const resto = candidatos.filter((c) => c !== principal);
       <div class="card">
         <h2 class="h2">Equipo</h2>
         <p class="muted" style="margin: 6px 0 0">
-          Conoce a las personas que lideran y representan el proyecto.
+          Haz click en una persona para ver su descripción.
         </p>
 
         <div class="team-area" style="margin-top: 18px">
           <!-- Principal centrado -->
           <div class="team-featured">
+<<<<<<< HEAD
             <article
               class="member-card is-featured"
               tabindex="0"
@@ -102,12 +107,28 @@ const resto = candidatos.filter((c) => c !== principal);
               <div class="member-footer">
                 <h3 class="member-name">{principal.nombre}</h3>
                 <p class="member-role">{principal.cargo}</p>
+=======
+            <button
+              type="button"
+              class="person-card is-featured"
+              data-nombre={principal.nombre}
+              data-cargo={principal.cargo}
+              data-foto={`${principal.foto}`}
+              data-descripcion={principal.descripcion}
+              aria-label={`Ver descripción de ${principal.nombre}`}
+            >
+              <img class="person-photo" src={`${principal.foto}`} alt={`Foto de ${principal.nombre}`} loading="lazy" />
+              <div class="person-footer">
+                <div class="person-name">{principal.nombre}</div>
+                <div class="person-role">{principal.cargo}</div>
+>>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
               </div>
-            </article>
+            </button>
           </div>
 
-          <!-- Resto en grid -->
+          <!-- Grid del resto -->
           <div class="team-grid">
+<<<<<<< HEAD
             {resto.map((p, i) => (
               <article
                 class="member-card"
@@ -125,8 +146,24 @@ const resto = candidatos.filter((c) => c !== principal);
                 <div class="member-footer">
                   <h3 class="member-name">{p.nombre}</h3>
                   <p class="member-role">{p.cargo}</p>
+=======
+            {resto.map((p) => (
+              <button
+                type="button"
+                class="person-card"
+                data-nombre={p.nombre}
+                data-cargo={p.cargo}
+                data-foto={`${p.foto}`}
+                data-descripcion={p.descripcion}
+                aria-label={`Ver descripción de ${p.nombre}`}
+              >
+                <img class="person-photo" src={`${p.foto}`} alt={`Foto de ${p.nombre}`} loading="lazy" />
+                <div class="person-footer">
+                  <div class="person-name">{p.nombre}</div>
+                  <div class="person-role">{p.cargo}</div>
+>>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
                 </div>
-              </article>
+              </button>
             ))}
           </div>
         </div>
@@ -135,6 +172,7 @@ const resto = candidatos.filter((c) => c !== principal);
     </div>
   </section>
 
+<<<<<<< HEAD
   <!-- Modal popup (fuera de cualquier contenedor con backdrop-filter) -->
   <div class="profile-overlay" id="profileOverlay" aria-hidden="true">
     <div class="profile-modal" role="dialog" aria-modal="true">
@@ -159,11 +197,37 @@ const resto = candidatos.filter((c) => c !== principal);
       justify-content: center;
     }
     .team-grid {
+=======
+  <!-- MODAL -->
+  <dialog id="personDialog" class="person-dialog">
+    <div class="dialog-head">
+      <div class="dialog-meta">
+        <div class="dialog-role" id="dlgCargo"></div>
+        <div class="dialog-name" id="dlgNombre"></div>
+      </div>
+      <button type="button" class="dialog-close" id="dlgClose" aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="dialog-body">
+      <img id="dlgFoto" class="dialog-photo" alt="" />
+      <div class="dialog-text" id="dlgDesc"></div>
+    </div>
+  </dialog>
+
+  <style>
+    /* ===== Layout equipo ===== */
+    .team-area{ display: grid; gap: 22px; }
+    .team-featured{ display: flex; justify-content: center; }
+
+    .team-grid{
+>>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 360px));
       gap: 22px;
+      justify-content: center; /* centra el conjunto */
     }
 
+<<<<<<< HEAD
     /* ====== Tarjeta miembro ====== */
     .member-card {
       width: 100%;
@@ -172,8 +236,31 @@ const resto = candidatos.filter((c) => c !== principal);
       overflow: hidden;
       background: #fff;
       box-shadow: 0 6px 18px rgba(2, 6, 23, .10);
+=======
+    /* Centrar última fila cuando sobran 1 o 2 */
+    .team-grid > :last-child:nth-child(3n + 1){ grid-column: 2; }
+    .team-grid > :nth-last-child(2):nth-child(3n + 1){ grid-column: 2; }
+
+    /* ===== Tarjeta ===== */
+    .person-card{
+      border: 0;
+      background: transparent;
+      padding: 0;
+      text-align: left;
+      width: 100%;
+      max-width: 360px;
+      border-radius: 10px;
+      overflow: hidden;
+>>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
       cursor: pointer;
+      box-shadow: 0 8px 18px rgba(2,6,23,.12);
+      transition: transform .15s ease, box-shadow .15s ease;
+      display: block;
+    }
+
+    .person-card:focus-visible{
       outline: none;
+<<<<<<< HEAD
       justify-self: center;
       transition: transform .25s ease, box-shadow .25s ease;
     }
@@ -190,10 +277,26 @@ const resto = candidatos.filter((c) => c !== principal);
     .member-photo {
       width: 100%;
       height: 200px;
+=======
+      box-shadow: 0 0 0 3px rgba(20,184,166,.35), 0 12px 26px rgba(2,6,23,.14);
+    }
+
+    .person-card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(2,6,23,.16);
+    }
+
+    .person-card.is-featured{ max-width: 380px; }
+
+    .person-photo{
+      width: 100%;
+      height: 190px;
+>>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
       object-fit: cover;
       display: block;
       background: #e9eef2;
     }
+<<<<<<< HEAD
     .member-footer {
       padding: 14px 16px 16px;
       text-align: center;
@@ -352,9 +455,164 @@ const resto = candidatos.filter((c) => c !== principal);
         cargo: card.querySelector('.member-role').textContent,
         foto: card.querySelector('.member-photo').getAttribute('src'),
         descripcion: card.getAttribute('data-desc'),
+=======
+
+    .person-footer{
+  background: #fff;
+  padding: 14px 14px 16px;
+  text-align: center;       /* 👈 centrado como antes */
+  border-top: 1px solid rgba(15,23,42,.06);
+}
+
+    .person-photo{
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: 50% 25%; /* 👈 sube el encuadre para ver caras */
+  display: block;
+  background: #e9eef2;
+}
+
+    .person-name{
+  margin: 0;
+  font-weight: 800;
+  color: rgba(15,23,42,.92);
+  font-size: 18px;          /* 👈 como antes (más marcado) */
+  line-height: 1.15;
+}
+
+.person-role{
+  margin: 8px 0 0;
+  font-size: 11px;
+  letter-spacing: .18em;    /* 👈 más “label” */
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(15,23,42,.58);
+}
+
+    /* ===== Modal ===== */
+    .person-dialog{
+      width: min(920px, calc(100vw - 32px));
+      border: 0;
+      border-radius: 14px;
+      padding: 0;
+      box-shadow: 0 22px 60px rgba(2,6,23,.28);
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .person-dialog::backdrop{
+      background: rgba(2,6,23,.45);
+      backdrop-filter: blur(3px);
+    }
+
+    .dialog-head{
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      background: linear-gradient(180deg, rgba(20,184,166,.10), rgba(255,255,255,1));
+    }
+
+    .dialog-role{
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: rgba(15,23,42,.60);
+    }
+
+    .dialog-name{
+      margin-top: 6px;
+      font-size: 20px;
+      font-weight: 900;
+      color: rgba(15,23,42,.92);
+      line-height: 1.1;
+    }
+
+    .dialog-close{
+      border: 1px solid rgba(15,23,42,.12);
+      background: #fff;
+      border-radius: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .dialog-body{
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .dialog-photo{
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,.08);
+      background: #e9eef2;
+    }
+
+    .dialog-text{
+      color: rgba(15,23,42,.78);
+      line-height: 1.7;
+      font-size: 14px;
+      max-height: 320px;
+      overflow: auto;
+      padding-right: 6px;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 980px){
+      .team-grid{ grid-template-columns: repeat(2, minmax(0, 360px)); }
+      .team-grid > :last-child:nth-child(3n + 1),
+      .team-grid > :nth-last-child(2):nth-child(3n + 1){ grid-column: auto; }
+      .dialog-body{ grid-template-columns: 1fr; }
+      .dialog-photo{ height: 240px; }
+      .dialog-text{ max-height: 260px; }
+    }
+
+    @media (max-width: 620px){
+      .team-grid{ grid-template-columns: 1fr; }
+      .person-photo{ height: 210px; }
+    }
+  </style>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dialog = document.getElementById("personDialog");
+      const closeBtn = document.getElementById("dlgClose");
+
+      const dlgNombre = document.getElementById("dlgNombre");
+      const dlgCargo = document.getElementById("dlgCargo");
+      const dlgFoto = document.getElementById("dlgFoto");
+      const dlgDesc = document.getElementById("dlgDesc");
+
+      if (!(dialog instanceof HTMLDialogElement)) return;
+
+      const openFromCard = (btn) => {
+        dlgNombre.textContent = btn.dataset.nombre || "";
+        dlgCargo.textContent = btn.dataset.cargo || "";
+        dlgDesc.textContent = btn.dataset.descripcion || "";
+
+        const foto = btn.dataset.foto || "";
+        dlgFoto.src = foto;
+        dlgFoto.alt = btn.dataset.nombre ? `Foto de ${btn.dataset.nombre}` : "Foto";
+
+        dialog.showModal();
+      };
+
+      document.querySelectorAll(".person-card").forEach((btn) => {
+        btn.addEventListener("click", () => openFromCard(btn));
+>>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
       });
     });
 
+<<<<<<< HEAD
     function openModal(i) {
       const d = data[i];
       if (!d) return;
@@ -391,3 +649,20 @@ const resto = candidatos.filter((c) => c !== principal);
 </script>
 
 </BaseLayout>
+=======
+      closeBtn?.addEventListener("click", () => dialog.close());
+
+      dialog.addEventListener("click", (e) => {
+        // click fuera -> cerrar
+        const rect = dialog.getBoundingClientRect();
+        const inside =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+        if (!inside) dialog.close();
+      });
+    });
+  </script>
+</BaseLayout>
+>>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651

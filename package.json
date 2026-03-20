@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.95.3",
+<<<<<<< HEAD
     "astro": "^4.16.0",
     "netlify": "^23.15.1",
     "nodemailer": "^8.0.3",
@@ -19,5 +20,12 @@
   "devDependencies": {
     "@astrojs/netlify": "^5.5.4",
     "@types/nodemailer": "^7.0.11"
+=======
+    "astro": "^5.17.3",
+    "netlify": "^23.15.1"
+  },
+  "devDependencies": {
+    "@astrojs/netlify": "^6.6.4"
+>>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
   }
 }
