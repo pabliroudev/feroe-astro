@@ -16,7 +16,7 @@ const candidatos = [
     cargo: "Director de Comunicación",
     foto: "andrias.jpeg",
     descripcion:
-      "Poulsen nació en Tórshavn el 19 de abril de 1990. Estudió Ciencias Políticas y Comunicación en Fróðskaparsetur Føroya (Universidad de las Islas Feroe), donde se interesó especialmente por la Comunicación Política, participando en revistas estudiantiles y en Unga Tjóðveldið (la juventud del partido República). Cursó parte de la carrera en la Universidad de Bergen (Noruega) gracias a un programa de intercambios, donde perfeccionó el uso de idiomas como el noruego o el inglés y el conocimiento de estudios nórdicos y de política comparada. Su formación culminaría con un Máster en Relaciones Internacionales en la Universidad de Oslo, que le proporcionó conocimientos en Diplomacia y Derecho Internacional. Actualmente es el Director de Comunicación del Partido República de las Islas Feroe. Utiliza su formación en Ciencia Política, Diplomacia e idiomas (inglés, feroés, danés y noruego) para ocupar un puesto clave en el partido, no como un “político clásico” sino como ideólogo y comunicador.",
+      "Poulsen nació en Tórshavn el 19 de abril de 1990. Estudió Ciencias Políticas y Comunicación en Fróðskaparsetur Føroya (Universidad de las Islas Feroe), donde se interesó especialmente por la Comunicación Política, participando en revistas estudiantiles y en Unga Tjóðveldið (la juventud del partido República). Cursó parte de la carrera en la Universidad de Bergen (Noruega) gracias a un programa de intercambios, donde perfeccionó el uso de idiomas como el noruego o el inglés y el conocimiento de estudios nórdicos y de política comparada. Su formación culminaría con un Máster en Relaciones Internacionales en la Universidad de Oslo, que le proporcionó conocimientos en Diplomacia y Derecho Internacional. Actualmente es el Director de Comunicación del Partido República de las Islas Feroe. Utiliza su formación en Ciencia Política, Diplomacia e idiomas (inglés, feroés, danés y noruego) para ocupar un puesto clave en el partido, no como un \"político clásico\" sino como ideólogo y comunicador.",
   },
   {
     nombre: "Elin Joensen",
@@ -90,24 +90,6 @@ const resto = candidatos.filter((c) => c !== principal);
         <div class="team-area" style="margin-top: 18px">
           <!-- Principal centrado -->
           <div class="team-featured">
-<<<<<<< HEAD
-            <article
-              class="member-card is-featured"
-              tabindex="0"
-              data-index="0"
-              data-desc={principal.descripcion}
-              aria-label={`Perfil de ${principal.nombre}. Pulsa para ver descripción.`}
-            >
-              <img
-                class="member-photo"
-                src={`${principal.foto}`}
-                alt={`Foto de ${principal.nombre}`}
-                loading="lazy"
-              />
-              <div class="member-footer">
-                <h3 class="member-name">{principal.nombre}</h3>
-                <p class="member-role">{principal.cargo}</p>
-=======
             <button
               type="button"
               class="person-card is-featured"
@@ -121,32 +103,12 @@ const resto = candidatos.filter((c) => c !== principal);
               <div class="person-footer">
                 <div class="person-name">{principal.nombre}</div>
                 <div class="person-role">{principal.cargo}</div>
->>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
               </div>
             </button>
           </div>
 
           <!-- Grid del resto -->
           <div class="team-grid">
-<<<<<<< HEAD
-            {resto.map((p, i) => (
-              <article
-                class="member-card"
-                tabindex="0"
-                data-index={String(i + 1)}
-                data-desc={p.descripcion}
-                aria-label={`Perfil de ${p.nombre}. Pulsa para ver descripción.`}
-              >
-                <img
-                  class="member-photo"
-                  src={`${p.foto}`}
-                  alt={`Foto de ${p.nombre}`}
-                  loading="lazy"
-                />
-                <div class="member-footer">
-                  <h3 class="member-name">{p.nombre}</h3>
-                  <p class="member-role">{p.cargo}</p>
-=======
             {resto.map((p) => (
               <button
                 type="button"
@@ -161,7 +123,6 @@ const resto = candidatos.filter((c) => c !== principal);
                 <div class="person-footer">
                   <div class="person-name">{p.nombre}</div>
                   <div class="person-role">{p.cargo}</div>
->>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
                 </div>
               </button>
             ))}
@@ -172,32 +133,6 @@ const resto = candidatos.filter((c) => c !== principal);
     </div>
   </section>
 
-<<<<<<< HEAD
-  <!-- Modal popup (fuera de cualquier contenedor con backdrop-filter) -->
-  <div class="profile-overlay" id="profileOverlay" aria-hidden="true">
-    <div class="profile-modal" role="dialog" aria-modal="true">
-      <button class="profile-close" id="profileClose" aria-label="Cerrar">&times;</button>
-      <p class="profile-role-label" id="modalRole"></p>
-      <h3 class="profile-name-label" id="modalName"></h3>
-      <div class="profile-content">
-        <img class="profile-img" id="modalImg" src="" alt="" />
-        <p class="profile-desc" id="modalDesc"></p>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    /* ====== Layout ====== */
-    .team-area {
-      display: grid;
-      gap: 22px;
-    }
-    .team-featured {
-      display: flex;
-      justify-content: center;
-    }
-    .team-grid {
-=======
   <!-- MODAL -->
   <dialog id="personDialog" class="person-dialog">
     <div class="dialog-head">
@@ -220,23 +155,12 @@ const resto = candidatos.filter((c) => c !== principal);
     .team-featured{ display: flex; justify-content: center; }
 
     .team-grid{
->>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 360px));
       gap: 22px;
-      justify-content: center; /* centra el conjunto */
+      justify-content: center;
     }
 
-<<<<<<< HEAD
-    /* ====== Tarjeta miembro ====== */
-    .member-card {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 6px 18px rgba(2, 6, 23, .10);
-=======
     /* Centrar última fila cuando sobran 1 o 2 */
     .team-grid > :last-child:nth-child(3n + 1){ grid-column: 2; }
     .team-grid > :nth-last-child(2):nth-child(3n + 1){ grid-column: 2; }
@@ -251,7 +175,6 @@ const resto = candidatos.filter((c) => c !== principal);
       max-width: 360px;
       border-radius: 10px;
       overflow: hidden;
->>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
       cursor: pointer;
       box-shadow: 0 8px 18px rgba(2,6,23,.12);
       transition: transform .15s ease, box-shadow .15s ease;
@@ -260,24 +183,6 @@ const resto = candidatos.filter((c) => c !== principal);
 
     .person-card:focus-visible{
       outline: none;
-<<<<<<< HEAD
-      justify-self: center;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .member-card.is-featured {
-      max-width: 380px;
-    }
-    .member-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 16px 40px rgba(2, 6, 23, .16);
-    }
-    .member-card:focus-visible {
-      box-shadow: 0 0 0 3px rgba(20, 184, 166, .4);
-    }
-    .member-photo {
-      width: 100%;
-      height: 200px;
-=======
       box-shadow: 0 0 0 3px rgba(20,184,166,.35), 0 12px 26px rgba(2,6,23,.14);
     }
 
@@ -291,204 +196,35 @@ const resto = candidatos.filter((c) => c !== principal);
     .person-photo{
       width: 100%;
       height: 190px;
->>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
       object-fit: cover;
+      object-position: 50% 25%;
       display: block;
       background: #e9eef2;
     }
-<<<<<<< HEAD
-    .member-footer {
-      padding: 14px 16px 16px;
-      text-align: center;
-    }
-    .member-name {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 800;
-      line-height: 1.2;
-      color: rgba(15, 23, 42, .92);
-    }
-    .member-role {
-      margin: 5px 0 0;
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: rgba(15, 23, 42, .55);
-    }
-
-    /* ====== Overlay + Modal ====== */
-    .profile-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(10, 20, 40, .55);
-      backdrop-filter: blur(6px);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity .3s ease, visibility .3s ease;
-    }
-    .profile-overlay.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-    .profile-modal {
-      position: relative;
-      width: min(92vw, 780px);
-      max-height: 88vh;
-      overflow-y: auto;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 24px 64px rgba(2, 6, 23, .28);
-      padding: 32px 34px 28px;
-      transform: translateY(24px) scale(.97);
-      transition: transform .3s ease;
-    }
-    .profile-overlay.is-open .profile-modal {
-      transform: translateY(0) scale(1);
-    }
-    .profile-close {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      width: 36px;
-      height: 36px;
-      border: none;
-      border-radius: 50%;
-      background: rgba(15, 23, 42, .08);
-      color: rgba(15, 23, 42, .7);
-      font-size: 22px;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .15s ease;
-    }
-    .profile-close:hover {
-      background: rgba(15, 23, 42, .16);
-    }
-    .profile-role-label {
-      margin: 0;
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      font-weight: 800;
-      color: rgba(15, 23, 42, .55);
-    }
-    .profile-name-label {
-      margin: 4px 0 18px;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -.02em;
-      color: rgba(15, 23, 42, .92);
-    }
-    .profile-content {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-    .profile-img {
-      width: 100%;
-      border-radius: 12px;
-      object-fit: cover;
-      aspect-ratio: 3/4;
-      background: #e9eef2;
-    }
-    .profile-desc {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.7;
-      color: rgba(15, 23, 42, .78);
-    }
-
-    /* ====== Centrar última fila ====== */
-    .team-grid > :last-child:nth-child(3n + 1) {
-      grid-column: 2;
-    }
-    .team-grid > :nth-last-child(2):nth-child(3n + 1) {
-      grid-column: 2;
-    }
-
-    /* ====== Responsive ====== */
-    @media (max-width: 980px) {
-      .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .team-grid > :last-child:nth-child(3n + 1) { grid-column: auto; }
-      .team-grid > :nth-last-child(2):nth-child(3n + 1) { grid-column: auto; }
-    }
-    @media (max-width: 700px) {
-      .profile-content {
-        grid-template-columns: 1fr;
-      }
-      .profile-img {
-        max-width: 240px;
-        aspect-ratio: 1;
-      }
-      .profile-modal {
-        padding: 24px 20px 20px;
-      }
-    }
-    @media (max-width: 620px) {
-      .team-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-
-  <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const candidatos = document.querySelectorAll('.member-card');
-    const overlay = document.getElementById('profileOverlay');
-    const modalName = document.getElementById('modalName');
-    const modalRole = document.getElementById('modalRole');
-    const modalImg = document.getElementById('modalImg');
-    const modalDesc = document.getElementById('modalDesc');
-    const closeBtn = document.getElementById('profileClose');
-
-    // Build data from DOM + hidden data
-    const data = [];
-    candidatos.forEach((card) => {
-      data.push({
-        nombre: card.querySelector('.member-name').textContent,
-        cargo: card.querySelector('.member-role').textContent,
-        foto: card.querySelector('.member-photo').getAttribute('src'),
-        descripcion: card.getAttribute('data-desc'),
-=======
 
     .person-footer{
-  background: #fff;
-  padding: 14px 14px 16px;
-  text-align: center;       /* 👈 centrado como antes */
-  border-top: 1px solid rgba(15,23,42,.06);
-}
-
-    .person-photo{
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  object-position: 50% 25%; /* 👈 sube el encuadre para ver caras */
-  display: block;
-  background: #e9eef2;
-}
+      background: #fff;
+      padding: 14px 14px 16px;
+      text-align: center;
+      border-top: 1px solid rgba(15,23,42,.06);
+    }
 
     .person-name{
-  margin: 0;
-  font-weight: 800;
-  color: rgba(15,23,42,.92);
-  font-size: 18px;          /* 👈 como antes (más marcado) */
-  line-height: 1.15;
-}
+      margin: 0;
+      font-weight: 800;
+      color: rgba(15,23,42,.92);
+      font-size: 18px;
+      line-height: 1.15;
+    }
 
-.person-role{
-  margin: 8px 0 0;
-  font-size: 11px;
-  letter-spacing: .18em;    /* 👈 más “label” */
-  text-transform: uppercase;
-  font-weight: 800;
-  color: rgba(15,23,42,.58);
-}
+    .person-role{
+      margin: 8px 0 0;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: rgba(15,23,42,.58);
+    }
 
     /* ===== Modal ===== */
     .person-dialog{
@@ -608,52 +344,11 @@ const resto = candidatos.filter((c) => c !== principal);
 
       document.querySelectorAll(".person-card").forEach((btn) => {
         btn.addEventListener("click", () => openFromCard(btn));
->>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
       });
-    });
 
-<<<<<<< HEAD
-    function openModal(i) {
-      const d = data[i];
-      if (!d) return;
-      modalName.textContent = d.nombre;
-      modalRole.textContent = d.cargo;
-      modalImg.src = d.foto;
-      modalImg.alt = 'Foto de ' + d.nombre;
-      modalDesc.textContent = d.descripcion;
-      overlay.classList.add('is-open');
-      overlay.setAttribute('aria-hidden', 'false');
-      closeBtn.focus();
-    }
-
-    function closeModal() {
-      overlay.classList.remove('is-open');
-      overlay.setAttribute('aria-hidden', 'true');
-    }
-
-    candidatos.forEach((card, i) => {
-      card.addEventListener('click', () => openModal(i));
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(i); }
-      });
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-  });
-</script>
-
-</BaseLayout>
-=======
       closeBtn?.addEventListener("click", () => dialog.close());
 
       dialog.addEventListener("click", (e) => {
-        // click fuera -> cerrar
         const rect = dialog.getBoundingClientRect();
         const inside =
           e.clientX >= rect.left &&
@@ -665,4 +360,3 @@ const resto = candidatos.filter((c) => c !== principal);
     });
   </script>
 </BaseLayout>
->>>>>>> 3c17635a1a709de25454bf2cdceef3f11783e651
